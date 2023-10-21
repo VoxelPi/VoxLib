@@ -1,7 +1,13 @@
 package net.voxelpi.voxlib.math.vector
 
+/**
+ * A mutable vector in a generic n dimensional vector space.
+ */
 public interface MutableVector<T : Number> : Vector<T> {
 
+    /**
+     * Sets the [index] element of the vector to the given [value].
+     */
     public operator fun set(index: Int, value: T)
 
 

@@ -1,5 +1,8 @@
 package net.voxelpi.voxlib.math.vector
 
+/**
+ * A vector in a generic 4 dimensional vector space.
+ */
 public interface MutableVector4<T : Number> : Vector4<T> {
 
     override var x: T
@@ -20,8 +23,14 @@ public interface MutableVector4<T : Number> : Vector4<T> {
     public operator fun divAssign(scalar: T)
 
 
+    /**
+     * Sets all elements of the vector to corresponding elements of [value].
+     */
     public fun set(value: Vector4<T>)
 
+    /**
+     * Sets all elements of the vector to [value].
+     */
     public fun set(value: T)
 
     override fun toDouble(): MutableVector4D {

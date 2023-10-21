@@ -1,5 +1,8 @@
 package net.voxelpi.voxlib.math.vector
 
+/**
+ * A vector in a generic 2 dimensional vector space.
+ */
 public interface MutableVector2<T : Number> : Vector2<T> {
 
     override var x: T
@@ -16,8 +19,14 @@ public interface MutableVector2<T : Number> : Vector2<T> {
     public operator fun divAssign(scalar: T)
 
 
+    /**
+     * Sets all elements of the vector to corresponding elements of [value].
+     */
     public fun set(value: Vector2<T>)
 
+    /**
+     * Sets all elements of the vector to [value].
+     */
     public fun set(value: T)
 
     override fun toDouble(): MutableVector2D {
