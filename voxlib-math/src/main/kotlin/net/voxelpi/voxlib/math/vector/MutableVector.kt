@@ -30,6 +30,12 @@ interface MutableVector<T : Number> : Vector<T> {
         }
     }
 
+    override fun toFloat(): MutableVectorF {
+        return MutableVectorF(size) { index ->
+            this[index].toFloat()
+        }
+    }
+
     override fun toInt(): MutableVectorI {
         return MutableVectorI(size) { index ->
             this[index].toInt()

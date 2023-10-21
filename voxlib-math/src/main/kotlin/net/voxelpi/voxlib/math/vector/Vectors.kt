@@ -1,10 +1,10 @@
 package net.voxelpi.voxlib.math.vector
 
-fun vector(vararg data: Double): Vector<Double> {
+fun vector(vararg data: Double): VectorD {
     return MutableVectorD(data)
 }
 
-fun mutableVector(vararg data: Double): MutableVector<Double> {
+fun mutableVector(vararg data: Double): MutableVectorD {
     return MutableVectorD(data)
 }
 
@@ -23,11 +23,35 @@ fun vector3D(x: Double, y: Double, z: Double): Vector3D {
 fun mutableVector3D(x: Double, y: Double, z: Double): MutableVector3D {
     return MutableVector3D(x, y, z)
 }
-fun vector(vararg data: Int): Vector<Int> {
+fun vector(vararg data: Float): VectorF {
+    return MutableVectorF(data)
+}
+
+fun mutableVector(vararg data: Float): MutableVectorF {
+    return MutableVectorF(data)
+}
+
+fun vector2F(x: Float, y: Float): Vector2F {
+    return MutableVector2F(x, y)
+}
+
+fun mutableVector2F(x: Float, y: Float): MutableVector2F {
+    return MutableVector2F(x, y)
+}
+
+fun vector3F(x: Float, y: Float, z: Float): Vector3F {
+    return MutableVector3F(x, y, z)
+}
+
+fun mutableVector3F(x: Float, y: Float, z: Float): MutableVector3F {
+    return MutableVector3F(x, y, z)
+}
+
+fun vector(vararg data: Int): VectorI {
     return MutableVectorI(data)
 }
 
-fun mutableVector(vararg data: Int): MutableVector<Int> {
+fun mutableVector(vararg data: Int): MutableVectorI {
     return MutableVectorI(data)
 }
 

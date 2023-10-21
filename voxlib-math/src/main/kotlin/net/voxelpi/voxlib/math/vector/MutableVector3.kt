@@ -26,6 +26,10 @@ interface MutableVector3<T : Number> : Vector3<T> {
         return MutableVector3D(x.toDouble(), y.toDouble(), z.toDouble())
     }
 
+    override fun toFloat(): MutableVector3F {
+        return MutableVector3F(x.toFloat(), y.toFloat(), z.toFloat())
+    }
+
     override fun toInt(): MutableVector3I {
         return MutableVector3I(x.toInt(), y.toInt(), z.toInt())
     }

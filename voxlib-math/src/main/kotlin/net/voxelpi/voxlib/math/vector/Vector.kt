@@ -45,7 +45,7 @@ interface Vector<T : Number> : Collection<T> {
     fun mutableCopy(): MutableVector<T>
 
     /**
-     * Returns the value of this vector as a Vector3D, which may involve rounding.
+     * Returns the value of this vector as a VectorD, which may involve rounding.
      */
     fun toDouble(): VectorD {
         return MutableVectorD(size) { index ->
@@ -54,7 +54,16 @@ interface Vector<T : Number> : Collection<T> {
     }
 
     /**
-     * Returns the value of this vector as a Vector3I, which may involve rounding or truncation.
+     * Returns the value of this vector as a VectorF, which may involve rounding.
+     */
+    fun toFloat(): VectorF {
+        return MutableVectorF(size) { index ->
+            this[index].toFloat()
+        }
+    }
+
+    /**
+     * Returns the value of this vector as a VectorI, which may involve rounding or truncation.
      */
     fun toInt(): VectorI {
         return MutableVectorI(size) { index ->

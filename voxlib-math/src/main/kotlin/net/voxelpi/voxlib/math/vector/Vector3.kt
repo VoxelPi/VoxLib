@@ -54,6 +54,13 @@ interface Vector3<T : Number> {
     }
 
     /**
+     * Returns the value of this vector as a Vector3F, which may involve rounding.
+     */
+    fun toFloat(): Vector3F {
+        return MutableVector3F(x.toFloat(), y.toFloat(), z.toFloat())
+    }
+
+    /**
      * Returns the value of this vector as a Vector3I, which may involve rounding or truncation.
      */
     fun toInt(): Vector3I {

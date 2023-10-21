@@ -24,6 +24,10 @@ interface MutableVector2<T : Number> : Vector2<T> {
         return MutableVector2D(x.toDouble(), y.toDouble())
     }
 
+    override fun toFloat(): MutableVector2F {
+        return MutableVector2F(x.toFloat(), y.toFloat())
+    }
+
     override fun toInt(): MutableVector2I {
         return MutableVector2I(x.toInt(), y.toInt())
     }
