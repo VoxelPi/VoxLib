@@ -23,6 +23,15 @@ fun vector3D(x: Double, y: Double, z: Double): Vector3D {
 fun mutableVector3D(x: Double, y: Double, z: Double): MutableVector3D {
     return MutableVector3D(x, y, z)
 }
+
+fun vector4D(x: Double, y: Double, z: Double, w: Double): Vector4D {
+    return MutableVector4D(x, y, z, w)
+}
+
+fun mutableVector4D(x: Double, y: Double, z: Double, w: Double): MutableVector4D {
+    return MutableVector4D(x, y, z, w)
+}
+
 fun vector(vararg data: Float): VectorF {
     return MutableVectorF(data)
 }
@@ -47,6 +56,14 @@ fun mutableVector3F(x: Float, y: Float, z: Float): MutableVector3F {
     return MutableVector3F(x, y, z)
 }
 
+fun vector4F(x: Float, y: Float, z: Float, w: Float): Vector4F {
+    return MutableVector4F(x, y, z, w)
+}
+
+fun mutableVector4F(x: Float, y: Float, z: Float, w: Float): MutableVector4F {
+    return MutableVector4F(x, y, z, w)
+}
+
 fun vector(vararg data: Int): VectorI {
     return MutableVectorI(data)
 }
@@ -69,4 +86,12 @@ fun vector3I(x: Int, y: Int, z: Int): Vector3I {
 
 fun mutableVector3I(x: Int, y: Int, z: Int): MutableVector3I {
     return MutableVector3I(x, y, z)
+}
+
+fun vector4I(x: Int, y: Int, z: Int, w: Int): Vector4I {
+    return MutableVector4I(x, y, z, w)
+}
+
+fun mutableVector4I(x: Int, y: Int, z: Int, w: Int): MutableVector4I {
+    return MutableVector4I(x, y, z, w)
 }
