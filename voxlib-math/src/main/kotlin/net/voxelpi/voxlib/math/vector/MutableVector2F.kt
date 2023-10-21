@@ -2,7 +2,7 @@ package net.voxelpi.voxlib.math.vector
 
 import kotlin.math.sqrt
 
-data class MutableVector2F(
+public data class MutableVector2F(
     override var x: Float,
     override var y: Float,
 ): Vector2F, MutableVector2<Float> {

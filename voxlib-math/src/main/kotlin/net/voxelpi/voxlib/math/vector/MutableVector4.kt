@@ -1,6 +1,6 @@
 package net.voxelpi.voxlib.math.vector
 
-interface MutableVector4<T : Number> : Vector4<T> {
+public interface MutableVector4<T : Number> : Vector4<T> {
 
     override var x: T
 
@@ -11,18 +11,18 @@ interface MutableVector4<T : Number> : Vector4<T> {
     override var w: T
 
 
-    operator fun plusAssign(other: Vector4<T>)
+    public operator fun plusAssign(other: Vector4<T>)
 
-    operator fun minusAssign(other: Vector4<T>)
+    public operator fun minusAssign(other: Vector4<T>)
 
-    operator fun timesAssign(scalar: T)
+    public operator fun timesAssign(scalar: T)
 
-    operator fun divAssign(scalar: T)
+    public operator fun divAssign(scalar: T)
 
 
-    fun set(value: Vector4<T>)
+    public fun set(value: Vector4<T>)
 
-    fun set(value: T)
+    public fun set(value: T)
 
     override fun toDouble(): MutableVector4D {
         return MutableVector4D(x.toDouble(), y.toDouble(), z.toDouble(), w.toDouble())

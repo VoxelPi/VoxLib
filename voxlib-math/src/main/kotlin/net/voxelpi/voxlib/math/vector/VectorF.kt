@@ -1,10 +1,10 @@
 package net.voxelpi.voxlib.math.vector
 
-interface VectorF : Vector<Float> {
+public interface VectorF : Vector<Float> {
 
-    fun length(): Float
+    public fun length(): Float
 
-    fun lengthSquared(): Float
+    public fun lengthSquared(): Float
 
 
     override fun unaryMinus(): VectorF

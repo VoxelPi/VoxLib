@@ -1,10 +1,10 @@
 package net.voxelpi.voxlib.math.vector
 
-interface Vector4I : Vector4<Int> {
+public interface Vector4I : Vector4<Int> {
 
-    fun length(): Double
+    public fun length(): Double
 
-    fun lengthSquared(): Int
+    public fun lengthSquared(): Int
 
 
     override fun unaryMinus(): Vector4I

@@ -3,9 +3,9 @@ package net.voxelpi.voxlib.math.vector
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-data class MutableVectorD(val data: DoubleArray) : VectorD, MutableVector<Double> {
+public data class MutableVectorD(val data: DoubleArray) : VectorD, MutableVector<Double> {
 
-    constructor(size: Int, init: (Int) -> Double) : this(DoubleArray(size, init))
+    public constructor(size: Int, init: (Int) -> Double) : this(DoubleArray(size, init))
 
     override fun get(index: Int): Double {
         return data[index]

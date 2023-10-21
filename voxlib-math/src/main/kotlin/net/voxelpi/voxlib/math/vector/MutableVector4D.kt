@@ -2,7 +2,7 @@ package net.voxelpi.voxlib.math.vector
 
 import kotlin.math.sqrt
 
-data class MutableVector4D(
+public data class MutableVector4D(
     override var x: Double,
     override var y: Double,
     override var z: Double,
