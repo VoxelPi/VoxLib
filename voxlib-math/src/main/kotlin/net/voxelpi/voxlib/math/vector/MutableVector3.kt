@@ -21,4 +21,12 @@ interface MutableVector3<T : Number> : Vector3<T> {
     fun set(value: Vector3<T>)
 
     fun set(value: T)
+
+    override fun toDouble(): MutableVector3D {
+        return MutableVector3D(x.toDouble(), y.toDouble(), z.toDouble())
+    }
+
+    override fun toInt(): MutableVector3I {
+        return MutableVector3I(x.toInt(), y.toInt(), z.toInt())
+    }
 }

@@ -23,4 +23,16 @@ interface MutableVector<T : Number> : Vector<T> {
      * Sets all elements of the vector to [value].
      */
     fun set(value: T)
+
+    override fun toDouble(): MutableVectorD {
+        return MutableVectorD(size) { index ->
+            this[index].toDouble()
+        }
+    }
+
+    override fun toInt(): MutableVectorI {
+        return MutableVectorI(size) { index ->
+            this[index].toInt()
+        }
+    }
 }

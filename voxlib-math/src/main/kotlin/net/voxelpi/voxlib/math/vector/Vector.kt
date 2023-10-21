@@ -43,4 +43,22 @@ interface Vector<T : Number> : Collection<T> {
      * Creates a mutable copy of the vector.
      */
     fun mutableCopy(): MutableVector<T>
+
+    /**
+     * Returns the value of this vector as a Vector3D, which may involve rounding.
+     */
+    fun toDouble(): VectorD {
+        return MutableVectorD(size) { index ->
+            this[index].toDouble()
+        }
+    }
+
+    /**
+     * Returns the value of this vector as a Vector3I, which may involve rounding or truncation.
+     */
+    fun toInt(): VectorI {
+        return MutableVectorI(size) { index ->
+            this[index].toInt()
+        }
+    }
 }

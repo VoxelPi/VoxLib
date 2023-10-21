@@ -41,4 +41,18 @@ interface Vector2<T : Number> {
      * Creates a mutable copy of the vector.
      */
     fun mutableCopy(): MutableVector2<T>
+
+    /**
+     * Returns the value of this vector as a Vector3D, which may involve rounding.
+     */
+    fun toDouble(): Vector2D {
+        return MutableVector2D(x.toDouble(), y.toDouble())
+    }
+
+    /**
+     * Returns the value of this vector as a Vector3I, which may involve rounding or truncation.
+     */
+    fun toInt(): Vector2I {
+        return MutableVector2I(x.toInt(), y.toInt())
+    }
 }

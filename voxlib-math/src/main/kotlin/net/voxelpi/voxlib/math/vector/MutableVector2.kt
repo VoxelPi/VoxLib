@@ -19,4 +19,12 @@ interface MutableVector2<T : Number> : Vector2<T> {
     fun set(value: Vector2<T>)
 
     fun set(value: T)
+
+    override fun toDouble(): MutableVector2D {
+        return MutableVector2D(x.toDouble(), y.toDouble())
+    }
+
+    override fun toInt(): MutableVector2I {
+        return MutableVector2I(x.toInt(), y.toInt())
+    }
 }
