@@ -10,4 +10,5 @@ plugins {
 }
 
 rootProject.name = "voxlib"
+include("voxlib-core")
 include("voxlib-math")

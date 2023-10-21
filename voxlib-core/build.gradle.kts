@@ -4,7 +4,9 @@ plugins {
 }
 
 dependencies {
-    api(project(":voxlib-core"))
+    api(kotlin("stdlib"))
+    api(libs.kotlin.reflect)
+    api(libs.bundles.kotlinx.coroutines)
 
     // Tests
     testImplementation(kotlin("test"))
