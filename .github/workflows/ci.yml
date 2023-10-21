@@ -5,6 +5,8 @@
 # This workflow will build a Kotlin project with Gradle and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
 
+# NOTE: The gradle wrapper must be executable. To do this run `git update-index --chmod=+x gradlew`
+
 name: Kotlin CI with Gradle
 
 on: 
