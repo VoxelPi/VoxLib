@@ -48,6 +48,17 @@ public interface AABB3<T> where T : Number, T : Comparable<T> {
     }
 
     /**
+     * Checks if the bounding box intersects with the given [box].
+     */
+    public fun intersects(box: AABB3<T>): Boolean {
+        val min1 = min
+        val max1 = max
+        val min2 = box.min
+        val max2 = box.max
+        return !((min2.x > max1.x || max2.x < min1.x) || (min2.y > max1.y || max2.y < min1.y) || (min2.z > max1.z || max2.z < min1.z))
+    }
+
+    /**
      * Returns if the given [position] lies on the boundary of the bounding box.
      */
     public fun isOnBoundary(position: Position3<T>): Boolean
