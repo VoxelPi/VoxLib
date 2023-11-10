@@ -21,7 +21,6 @@ public interface Vector4<T : Number> {
 
     public operator fun component4(): T = z
 
-
     public operator fun unaryMinus(): Vector4<T>
 
     public operator fun unaryPlus(): Vector4<T>
@@ -38,7 +37,6 @@ public interface Vector4<T : Number> {
      * Calculates the dot product of the two vectors.
      */
     public infix fun dot(other: Vector4<T>): T
-
 
     /**
      * Creates an immutable copy of the vector.

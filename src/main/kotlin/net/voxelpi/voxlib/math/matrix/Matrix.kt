@@ -37,7 +37,6 @@ public interface Matrix<T : Number> {
      */
     public operator fun get(row: Int, column: Int): T
 
-
     public operator fun unaryMinus(): Matrix<T>
 
     public operator fun unaryPlus(): Matrix<T>
@@ -64,7 +63,6 @@ public interface Matrix<T : Number> {
      * Calculates the transpose matrix.
      */
     public fun transpose(): Matrix<T>
-
 
     /**
      * Creates an immutable copy of the matrix.
@@ -93,8 +91,8 @@ public interface Matrix<T : Number> {
 
         (1..<3).toList()
 
-        for (row in 0..<(rows-1)) {
-            for (column in (row+1)..<columns) {
+        for (row in 0..<(rows - 1)) {
+            for (column in (row + 1)..<columns) {
                 if (this[row, column] != this[column, row]) {
                     return false
                 }
@@ -112,8 +110,8 @@ public interface Matrix<T : Number> {
             return false
         }
 
-        for (row in 0..<(rows-1)) {
-            for (column in (row+1)..<columns) {
+        for (row in 0..<(rows - 1)) {
+            for (column in (row + 1)..<columns) {
                 if (this[row, column] != this[column, row]) {
                     return false
                 }

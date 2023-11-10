@@ -7,7 +7,7 @@ public data class MutableVector4F(
     override var y: Float,
     override var z: Float,
     override var w: Float,
-): Vector4F, MutableVector4<Float> {
+) : Vector4F, MutableVector4<Float> {
 
     override fun plusAssign(other: Vector4<Float>) {
         x += other.x
@@ -51,7 +51,6 @@ public data class MutableVector4F(
         w = value
     }
 
-
     override fun unaryMinus(): MutableVector4F {
         return MutableVector4F(-x, -y, -z, -w)
     }
@@ -80,7 +79,6 @@ public data class MutableVector4F(
         return x * other.x + y * other.y + z * other.z + w * other.w
     }
 
-
     override fun copy(): Vector4F {
         return MutableVector4F(x, y, z, w)
     }
@@ -89,12 +87,11 @@ public data class MutableVector4F(
         return MutableVector4F(x, y, z, w)
     }
 
-
     override fun length(): Float {
-        return sqrt(x*x + y*y + z*z + w*w)
+        return sqrt(x * x + y * y + z * z + w * w)
     }
 
     override fun lengthSquared(): Float {
-        return x*x + y*y + z*z + w*w
+        return x * x + y * y + z * z + w * w
     }
 }

@@ -13,11 +13,9 @@ public interface MutablePosition3<T : Number> : Position3<T> {
 
     override var z: T
 
-
     public operator fun plusAssign(other: Vector3<T>)
 
     public operator fun minusAssign(other: Vector3<T>)
-
 
     /**
      * Sets all elements of the position to corresponding elements of [value].

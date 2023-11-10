@@ -21,7 +21,6 @@ public data class MutableVectorF(val data: FloatArray) : VectorF, MutableVector<
         data[index] = value
     }
 
-
     override fun plusAssign(other: Vector<Float>) {
         for (index in data.indices) {
             this[index] += other[index]
@@ -57,7 +56,6 @@ public data class MutableVectorF(val data: FloatArray) : VectorF, MutableVector<
             this[index] = value
         }
     }
-
 
     override fun unaryMinus(): MutableVectorF {
         return MutableVectorF(size) { index ->
@@ -105,7 +103,6 @@ public data class MutableVectorF(val data: FloatArray) : VectorF, MutableVector<
         return sum
     }
 
-
     override fun copy(): VectorF {
         return MutableVectorF(data.copyOf())
     }
@@ -113,7 +110,6 @@ public data class MutableVectorF(val data: FloatArray) : VectorF, MutableVector<
     override fun mutableCopy(): MutableVectorF {
         return MutableVectorF(data.copyOf())
     }
-
 
     override fun length(): Float {
         var sum = 0F
@@ -130,7 +126,6 @@ public data class MutableVectorF(val data: FloatArray) : VectorF, MutableVector<
         }
         return sum
     }
-
 
     override fun isEmpty(): Boolean {
         return data.isEmpty()

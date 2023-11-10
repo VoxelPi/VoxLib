@@ -17,11 +17,9 @@ public interface Position<T : Number> : Collection<T> {
      */
     public val indices: IntRange
 
-
     public operator fun plus(other: Vector<T>): Position<T>
 
     public operator fun minus(other: Vector<T>): Position<T>
-
 
     /**
      * Creates an immutable copy of the position.

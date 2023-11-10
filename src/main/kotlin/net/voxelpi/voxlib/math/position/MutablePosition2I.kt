@@ -5,7 +5,7 @@ import net.voxelpi.voxlib.math.vector.Vector2
 public data class MutablePosition2I(
     override var x: Int,
     override var y: Int,
-): Position2I, MutablePosition2<Int> {
+) : Position2I, MutablePosition2<Int> {
 
     override fun plusAssign(other: Vector2<Int>) {
         x += other.x
@@ -27,7 +27,6 @@ public data class MutablePosition2I(
         y = value
     }
 
-
     override fun plus(other: Vector2<Int>): MutablePosition2I {
         return MutablePosition2I(x + other.x, y + other.y)
     }
@@ -35,7 +34,6 @@ public data class MutablePosition2I(
     override fun minus(other: Vector2<Int>): MutablePosition2I {
         return MutablePosition2I(x - other.x, y - other.y)
     }
-
 
     override fun copy(): Position2I {
         return MutablePosition2I(x, y)

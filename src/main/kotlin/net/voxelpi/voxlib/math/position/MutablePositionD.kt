@@ -20,7 +20,6 @@ public data class MutablePositionD(val data: DoubleArray) : PositionD, MutablePo
         data[index] = value
     }
 
-
     override fun plusAssign(other: Vector<Double>) {
         for (index in data.indices) {
             this[index] += other[index]
@@ -45,7 +44,6 @@ public data class MutablePositionD(val data: DoubleArray) : PositionD, MutablePo
         }
     }
 
-
     override fun plus(other: Vector<Double>): MutablePositionD {
         return MutablePositionD(size) { index ->
             this[index] + other[index]
@@ -58,7 +56,6 @@ public data class MutablePositionD(val data: DoubleArray) : PositionD, MutablePo
         }
     }
 
-
     override fun copy(): PositionD {
         return MutablePositionD(data.copyOf())
     }
@@ -66,7 +63,6 @@ public data class MutablePositionD(val data: DoubleArray) : PositionD, MutablePo
     override fun mutableCopy(): MutablePositionD {
         return MutablePositionD(data.copyOf())
     }
-
 
     override fun isEmpty(): Boolean {
         return data.isEmpty()

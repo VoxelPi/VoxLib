@@ -15,7 +15,6 @@ public interface Vector<T : Number> : Collection<T> {
      */
     public val indices: IntRange
 
-
     public operator fun unaryMinus(): Vector<T>
 
     public operator fun unaryPlus(): Vector<T>
@@ -32,7 +31,6 @@ public interface Vector<T : Number> : Collection<T> {
      * Calculates the dot product of the two vectors.
      */
     public infix fun dot(other: Vector<T>): T
-
 
     /**
      * Creates an immutable copy of the vector.

@@ -13,7 +13,6 @@ public interface Vector2<T : Number> {
 
     public operator fun component2(): T = y
 
-
     public operator fun unaryMinus(): Vector2<T>
 
     public operator fun unaryPlus(): Vector2<T>
@@ -30,7 +29,6 @@ public interface Vector2<T : Number> {
      * Calculates the dot product of the two vectors.
      */
     public infix fun dot(other: Vector2<T>): T
-
 
     /**
      * Creates an immutable copy of the vector.

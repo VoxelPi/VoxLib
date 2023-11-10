@@ -16,6 +16,8 @@ ktlint_standard_no-empty-first-line-in-class-body = disabled
 ktlint_standard_function-signature = disabled
 ktlint_standard_multiline-expression-wrapping = disabled
 ktlint_standard_string-template-indent = disabled
+ktlint_standard_chain-wrapping = disabled
+ktlint_standard_string-template = disabled
 
 # ktlint_standard = disabled # Disable all rules from the `standard` rule set provided by KtLint
 # ktlint_experimental = disabled # Enable all `experimental` rules from all rule sets provided by KtLint or other rule providers

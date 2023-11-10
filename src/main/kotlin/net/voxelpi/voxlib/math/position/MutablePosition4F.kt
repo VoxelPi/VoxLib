@@ -7,7 +7,7 @@ public data class MutablePosition4F(
     override var y: Float,
     override var z: Float,
     override var w: Float,
-): Position4F, MutablePosition4<Float> {
+) : Position4F, MutablePosition4<Float> {
 
     override fun plusAssign(other: Vector4<Float>) {
         x += other.x
@@ -37,7 +37,6 @@ public data class MutablePosition4F(
         w = value
     }
 
-
     override fun plus(other: Vector4<Float>): MutablePosition4F {
         return MutablePosition4F(x + other.x, y + other.y, z + other.z, w + other.w)
     }
@@ -45,7 +44,6 @@ public data class MutablePosition4F(
     override fun minus(other: Vector4<Float>): MutablePosition4F {
         return MutablePosition4F(x - other.x, y - other.y, z - other.z, w - other.w)
     }
-
 
     override fun copy(): Position4F {
         return MutablePosition4F(x, y, z, w)

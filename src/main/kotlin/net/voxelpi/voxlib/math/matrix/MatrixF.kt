@@ -35,7 +35,6 @@ public interface MatrixF : Matrix<Float> {
 
     override fun transpose(): MatrixF
 
-
     override fun copy(): MatrixF
 
     override fun mutableCopy(): MutableMatrixF

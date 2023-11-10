@@ -13,7 +13,6 @@ public interface MutableVector4<T : Number> : Vector4<T> {
 
     override var w: T
 
-
     public operator fun plusAssign(other: Vector4<T>)
 
     public operator fun minusAssign(other: Vector4<T>)
@@ -21,7 +20,6 @@ public interface MutableVector4<T : Number> : Vector4<T> {
     public operator fun timesAssign(scalar: T)
 
     public operator fun divAssign(scalar: T)
-
 
     /**
      * Sets all elements of the vector to corresponding elements of [value].

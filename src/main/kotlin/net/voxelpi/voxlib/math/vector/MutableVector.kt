@@ -10,7 +10,6 @@ public interface MutableVector<T : Number> : Vector<T> {
      */
     public operator fun set(index: Int, value: T)
 
-
     public operator fun plusAssign(other: Vector<T>)
 
     public operator fun minusAssign(other: Vector<T>)
@@ -18,7 +17,6 @@ public interface MutableVector<T : Number> : Vector<T> {
     public operator fun timesAssign(scalar: T)
 
     public operator fun divAssign(scalar: T)
-
 
     /**
      * Sets all elements of the vector to corresponding elements of [value].

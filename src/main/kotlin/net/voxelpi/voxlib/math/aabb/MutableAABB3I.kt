@@ -37,7 +37,9 @@ public data class MutableAABB3I(
     }
 
     override fun isOnSurface(position: Position3<Int>): Boolean {
-        return position.x == min.x || position.x == max.x || position.y == min.y || position.y == max.y || position.z == min.z || position.z == max.z
+        return position.x == min.x || position.x == max.x
+            || position.y == min.y || position.y == max.y
+            || position.z == min.z || position.z == max.z
     }
 
     override fun iterator(): Iterator<Position3I> {

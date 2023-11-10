@@ -21,7 +21,6 @@ public data class MutableVectorD(val data: DoubleArray) : VectorD, MutableVector
         data[index] = value
     }
 
-
     override fun plusAssign(other: Vector<Double>) {
         for (index in data.indices) {
             this[index] += other[index]
@@ -57,7 +56,6 @@ public data class MutableVectorD(val data: DoubleArray) : VectorD, MutableVector
             this[index] = value
         }
     }
-
 
     override fun unaryMinus(): MutableVectorD {
         return MutableVectorD(size) { index ->
@@ -105,7 +103,6 @@ public data class MutableVectorD(val data: DoubleArray) : VectorD, MutableVector
         return sum
     }
 
-
     override fun copy(): VectorD {
         return MutableVectorD(data.copyOf())
     }
@@ -113,7 +110,6 @@ public data class MutableVectorD(val data: DoubleArray) : VectorD, MutableVector
     override fun mutableCopy(): MutableVectorD {
         return MutableVectorD(data.copyOf())
     }
-
 
     override fun length(): Double {
         var sum = 0.0
@@ -130,7 +126,6 @@ public data class MutableVectorD(val data: DoubleArray) : VectorD, MutableVector
         }
         return sum
     }
-
 
     override fun isEmpty(): Boolean {
         return data.isEmpty()

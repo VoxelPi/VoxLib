@@ -6,7 +6,6 @@ public interface Vector2I : Vector2<Int> {
 
     public fun lengthSquared(): Int
 
-
     override fun unaryMinus(): Vector2I
 
     override fun unaryPlus(): Vector2I
@@ -18,7 +17,6 @@ public interface Vector2I : Vector2<Int> {
     override fun times(scalar: Int): Vector2I
 
     override fun div(scalar: Int): Vector2I
-
 
     override fun copy(): Vector2I
 

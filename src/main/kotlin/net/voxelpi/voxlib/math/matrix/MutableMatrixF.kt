@@ -19,7 +19,13 @@ public data class MutableMatrixF(
     val data: FloatArray,
 ) : MatrixF, MutableMatrix<Float> {
 
-    public constructor(rows: Int, columns: Int, init: (Int, Int) -> Float) : this(rows, columns, FloatArray(rows * columns) { index -> init(index / columns, index % columns) })
+    public constructor(rows: Int, columns: Int, init: (Int, Int) -> Float) : this(
+        rows,
+        columns,
+        FloatArray(rows * columns) { index ->
+            init(index / columns, index % columns)
+        }
+    )
 
     override fun get(row: Int, column: Int): Float {
         require(row in 0..<rows)
@@ -46,7 +52,6 @@ public data class MutableMatrixF(
             data[index] = value
         }
     }
-
 
     override fun plusAssign(other: Matrix<Float>) {
         for (row in 0..<rows) {
@@ -75,7 +80,6 @@ public data class MutableMatrixF(
             data[index] /= scalar
         }
     }
-
 
     override fun unaryMinus(): MutableMatrixF {
         return MutableMatrixF(rows, columns) { row, column ->
@@ -122,7 +126,9 @@ public data class MutableMatrixF(
     }
 
     override fun times(vector: Vector<Float>): VectorF {
-        require(this.columns == vector.size) { "Incompatible matrices. Can't multiply a $shapeName matrix with a ${vector.size}x1 column vector" }
+        require(this.columns == vector.size) {
+            "Incompatible matrices. Can't multiply a $shapeName matrix with a ${vector.size}x1 column vector"
+        }
 
         return MutableVectorF(this.rows) { row ->
             var sum = 0F
@@ -186,7 +192,6 @@ public data class MutableMatrixF(
             this[column, row]
         }
     }
-
 
     override fun copy(): MatrixF {
         return MutableMatrixF(rows, columns, data.copyOf())

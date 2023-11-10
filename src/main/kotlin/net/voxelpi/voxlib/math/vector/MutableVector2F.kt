@@ -5,7 +5,7 @@ import kotlin.math.sqrt
 public data class MutableVector2F(
     override var x: Float,
     override var y: Float,
-): Vector2F, MutableVector2<Float> {
+) : Vector2F, MutableVector2<Float> {
 
     override fun plusAssign(other: Vector2<Float>) {
         x += other.x
@@ -37,7 +37,6 @@ public data class MutableVector2F(
         y = value
     }
 
-
     override fun unaryMinus(): MutableVector2F {
         return MutableVector2F(-x, -y)
     }
@@ -66,7 +65,6 @@ public data class MutableVector2F(
         return x * other.x + y * other.y
     }
 
-
     override fun copy(): Vector2F {
         return MutableVector2F(x, y)
     }
@@ -75,12 +73,11 @@ public data class MutableVector2F(
         return MutableVector2F(x, y)
     }
 
-
     override fun length(): Float {
-        return sqrt(x*x + y*y)
+        return sqrt(x * x + y * y)
     }
 
     override fun lengthSquared(): Float {
-        return x*x + y*y
+        return x * x + y * y
     }
 }

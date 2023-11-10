@@ -6,7 +6,7 @@ public data class MutablePosition3I(
     override var x: Int,
     override var y: Int,
     override var z: Int,
-): Position3I, MutablePosition3<Int> {
+) : Position3I, MutablePosition3<Int> {
 
     override fun plusAssign(other: Vector3<Int>) {
         x += other.x
@@ -32,7 +32,6 @@ public data class MutablePosition3I(
         z = value
     }
 
-
     override fun plus(other: Vector3<Int>): MutablePosition3I {
         return MutablePosition3I(x + other.x, y + other.y, z + other.z)
     }
@@ -40,7 +39,6 @@ public data class MutablePosition3I(
     override fun minus(other: Vector3<Int>): MutablePosition3I {
         return MutablePosition3I(x - other.x, y - other.y, z - other.z)
     }
-
 
     override fun copy(): Position3I {
         return MutablePosition3I(x, y, z)

@@ -7,7 +7,7 @@ public data class MutablePosition4D(
     override var y: Double,
     override var z: Double,
     override var w: Double,
-): Position4D, MutablePosition4<Double> {
+) : Position4D, MutablePosition4<Double> {
 
     override fun plusAssign(other: Vector4<Double>) {
         x += other.x
@@ -37,7 +37,6 @@ public data class MutablePosition4D(
         w = value
     }
 
-
     override fun plus(other: Vector4<Double>): MutablePosition4D {
         return MutablePosition4D(x + other.x, y + other.y, z + other.z, w + other.w)
     }
@@ -45,7 +44,6 @@ public data class MutablePosition4D(
     override fun minus(other: Vector4<Double>): MutablePosition4D {
         return MutablePosition4D(x - other.x, y - other.y, z - other.z, w - other.w)
     }
-
 
     override fun copy(): Position4D {
         return MutablePosition4D(x, y, z, w)

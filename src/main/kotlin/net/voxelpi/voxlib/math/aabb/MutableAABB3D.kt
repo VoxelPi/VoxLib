@@ -36,6 +36,8 @@ public data class MutableAABB3D(
     }
 
     override fun isOnSurface(position: Position3<Double>): Boolean {
-        return position.x == min.x || position.x == max.x || position.y == min.y || position.y == max.y || position.z == min.z || position.z == max.z
+        return position.x == min.x || position.x == max.x
+            || position.y == min.y || position.y == max.y
+            || position.z == min.z || position.z == max.z
     }
 }

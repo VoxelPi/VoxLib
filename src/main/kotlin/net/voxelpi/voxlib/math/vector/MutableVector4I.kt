@@ -7,7 +7,7 @@ public data class MutableVector4I(
     override var y: Int,
     override var z: Int,
     override var w: Int,
-): Vector4I, MutableVector4<Int> {
+) : Vector4I, MutableVector4<Int> {
 
     override fun plusAssign(other: Vector4<Int>) {
         x += other.x
@@ -51,7 +51,6 @@ public data class MutableVector4I(
         w = value
     }
 
-
     override fun unaryMinus(): MutableVector4I {
         return MutableVector4I(-x, -y, -z, -w)
     }
@@ -80,7 +79,6 @@ public data class MutableVector4I(
         return x * other.x + y * other.y + z * other.z + w * other.w
     }
 
-
     override fun copy(): Vector4I {
         return MutableVector4I(x, y, z, w)
     }
@@ -89,12 +87,11 @@ public data class MutableVector4I(
         return MutableVector4I(x, y, z, w)
     }
 
-
     override fun length(): Double {
-        return sqrt((x*x + y*y + z*z + w*w).toDouble())
+        return sqrt((x * x + y * y + z * z + w * w).toDouble())
     }
 
     override fun lengthSquared(): Int {
-        return x*x + y*y + z*z + w*w
+        return x * x + y * y + z * z + w * w
     }
 }

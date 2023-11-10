@@ -8,7 +8,6 @@ public interface Position2D : Position2<Double> {
 
     override fun minus(other: Vector2<Double>): Position2D
 
-
     override fun copy(): Position2D
 
     override fun mutableCopy(): MutablePosition2D

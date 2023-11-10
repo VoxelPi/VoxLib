@@ -6,7 +6,6 @@ public interface Vector3I : Vector3<Int> {
 
     public fun lengthSquared(): Int
 
-
     override fun unaryMinus(): Vector3I
 
     override fun unaryPlus(): Vector3I
@@ -18,7 +17,6 @@ public interface Vector3I : Vector3<Int> {
     override fun times(scalar: Int): Vector3I
 
     override fun div(scalar: Int): Vector3I
-
 
     override fun copy(): Vector3I
 

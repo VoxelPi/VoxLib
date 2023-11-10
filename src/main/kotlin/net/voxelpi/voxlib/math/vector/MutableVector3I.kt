@@ -6,7 +6,7 @@ public data class MutableVector3I(
     override var x: Int,
     override var y: Int,
     override var z: Int,
-): Vector3I, MutableVector3<Int> {
+) : Vector3I, MutableVector3<Int> {
 
     override fun plusAssign(other: Vector3<Int>) {
         x += other.x
@@ -44,7 +44,6 @@ public data class MutableVector3I(
         z = value
     }
 
-
     override fun unaryMinus(): MutableVector3I {
         return MutableVector3I(-x, -y, -z)
     }
@@ -73,7 +72,6 @@ public data class MutableVector3I(
         return x * other.x + y * other.y + z * other.z
     }
 
-
     override fun copy(): Vector3I {
         return MutableVector3I(x, y, z)
     }
@@ -82,12 +80,11 @@ public data class MutableVector3I(
         return MutableVector3I(x, y, z)
     }
 
-
     override fun length(): Double {
-        return sqrt((x*x + y*y + z*z).toDouble())
+        return sqrt((x * x + y * y + z * z).toDouble())
     }
 
     override fun lengthSquared(): Int {
-        return x*x + y*y + z*z
+        return x * x + y * y + z * z
     }
 }

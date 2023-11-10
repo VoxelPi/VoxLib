@@ -12,11 +12,9 @@ public interface MutablePosition<T : Number> : Position<T> {
      */
     public operator fun set(index: Int, value: T)
 
-
     public operator fun plusAssign(other: Vector<T>)
 
     public operator fun minusAssign(other: Vector<T>)
-
 
     /**
      * Sets all elements of the position to corresponding elements of [value].

@@ -8,7 +8,6 @@ public interface PositionD : Position<Double> {
 
     override fun minus(other: Vector<Double>): PositionD
 
-
     override fun copy(): PositionD
 
     override fun mutableCopy(): MutablePositionD

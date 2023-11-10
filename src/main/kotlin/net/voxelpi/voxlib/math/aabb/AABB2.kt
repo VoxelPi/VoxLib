@@ -6,7 +6,7 @@ import net.voxelpi.voxlib.math.vector.Vector2
 /**
  * An axis aligned bounding box.
  */
-public interface AABB2<T> where T : Number, T: Comparable<T> {
+public interface AABB2<T> where T : Number, T : Comparable<T> {
 
     /**
      * The minimum corner of the box.
