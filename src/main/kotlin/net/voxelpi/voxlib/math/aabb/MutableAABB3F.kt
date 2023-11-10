@@ -4,6 +4,7 @@ import net.voxelpi.voxlib.math.position.MutablePosition3F
 import net.voxelpi.voxlib.math.position.Position3
 import net.voxelpi.voxlib.math.vector.Vector3F
 import net.voxelpi.voxlib.math.vector.vector3F
+import kotlin.math.abs
 
 public data class MutableAABB3F(
     override var min: MutablePosition3F,
@@ -35,9 +36,15 @@ public data class MutableAABB3F(
         return MutableAABB3F(min - vector3F(amount, amount, amount), max + vector3F(amount, amount, amount))
     }
 
-    override fun isOnSurface(position: Position3<Float>): Boolean {
+    override fun isOnBoundary(position: Position3<Float>): Boolean {
         return position.x == min.x || position.x == max.x
             || position.y == min.y || position.y == max.y
             || position.z == min.z || position.z == max.z
+    }
+
+    override fun isOnBoundary(position: Position3<Float>, tolerance: Float): Boolean {
+        return abs(position.x - min.x) < tolerance || abs(position.x - max.x) < tolerance
+            || abs(position.y - min.y) < tolerance || abs(position.y - max.y) < tolerance
+            || abs(position.z - min.z) < tolerance || abs(position.z - max.z) < tolerance
     }
 }

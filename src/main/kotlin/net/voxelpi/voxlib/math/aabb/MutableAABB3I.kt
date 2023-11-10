@@ -36,7 +36,7 @@ public data class MutableAABB3I(
         return MutableAABB3I(min - vector3I(amount, amount, amount), max + vector3I(amount, amount, amount))
     }
 
-    override fun isOnSurface(position: Position3<Int>): Boolean {
+    override fun isOnBoundary(position: Position3<Int>): Boolean {
         return position.x == min.x || position.x == max.x
             || position.y == min.y || position.y == max.y
             || position.z == min.z || position.z == max.z

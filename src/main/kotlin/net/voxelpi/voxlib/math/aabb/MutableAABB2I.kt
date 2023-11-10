@@ -28,7 +28,7 @@ public data class MutableAABB2I(
         return MutableAABB2I(min - vector2I(amount, amount), max + vector2I(amount, amount))
     }
 
-    override fun isOnSurface(position: Position2<Int>): Boolean {
+    override fun isOnBoundary(position: Position2<Int>): Boolean {
         return position.x == min.x || position.x == max.x || position.y == min.y || position.y == max.y
     }
 

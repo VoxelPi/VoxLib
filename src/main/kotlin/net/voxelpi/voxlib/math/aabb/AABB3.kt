@@ -48,9 +48,9 @@ public interface AABB3<T> where T : Number, T : Comparable<T> {
     }
 
     /**
-     * Returns if the given position is on the surface of the bounding box.
+     * Returns if the given [position] lies on the boundary of the bounding box.
      */
-    public fun isOnSurface(position: Position3<T>): Boolean
+    public fun isOnBoundary(position: Position3<T>): Boolean
 
     /**
      * Returns a copy of this bounding box, that is expanded in every direction by [amount].
