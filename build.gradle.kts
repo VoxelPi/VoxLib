@@ -31,12 +31,12 @@ dependencies {
 }
 
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(21)
     explicitApi()
 }
 
 tasks {
-    val javaVersion = JavaVersion.VERSION_17
+    val javaVersion = JavaVersion.VERSION_21
 
     dokkaHtml.configure {
         outputDirectory.set(layout.buildDirectory.dir("docs"))
