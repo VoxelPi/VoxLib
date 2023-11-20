@@ -103,13 +103,37 @@ public interface Matrix4F : Matrix4<Float> {
             )
         }
 
-        public fun orthographicProjection2D(left: Float, right: Float, bottom: Float, top: Float): Matrix4F {
+        public fun orthographicProjection2D(
+            left: Float,
+            right: Float,
+            bottom: Float,
+            top: Float,
+            zNear: Float = 1F,
+            zFar: Float = -1F,
+        ): Matrix4F {
             @Suppress("ktlint:standard:no-multi-spaces")
             return MutableMatrix4F(
-                2F / (right - left), 0F,                   0F, (right + left) / (left - right),
-                0F,                  2F / (top - bottom),  0F, (top + bottom) / (bottom - top),
-                0F,                  0F,                  -1F, 0F,
-                0F,                  0F,                   0F, 1F
+                2F / (right - left), 0F,                   0F,                  (right + left) / (left - right),
+                0F,                  2F / (top - bottom),  0F,                  (top + bottom) / (bottom - top),
+                0F,                  0F,                   2F / (zFar - zNear), (zNear + zFar) / (zNear - zFar),
+                0F,                  0F,                   0F,                  1F
+            )
+        }
+
+        public fun orthographicProjectionInv2D(
+            left: Float,
+            right: Float,
+            bottom: Float,
+            top: Float,
+            zNear: Float = 1F,
+            zFar: Float = -1F,
+        ): Matrix4F {
+            @Suppress("ktlint:standard:no-multi-spaces")
+            return MutableMatrix4F(
+                (right - left) / 2F, 0F,                   0F,                  -(right + left) / (left - right),
+                0F,                  (top - bottom) / 2F,  0F,                  -(top + bottom) / (bottom - top),
+                0F,                  0F,                   (zFar - zNear) / 2F, -(zNear + zFar) / (zNear - zFar),
+                0F,                  0F,                   0F,                  1F
             )
         }
     }
