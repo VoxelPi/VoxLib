@@ -31,6 +31,11 @@ public interface Position4<T : Number> {
     public operator fun minus(other: Position4<T>): Vector4<T>
 
     /**
+     * Returns a vector that points from this position to the given [position].
+     */
+    public infix fun to(position: Position4<T>): Vector4<T>
+
+    /**
      * Creates an immutable copy of the position.
      */
     public fun copy(): Position4<T>

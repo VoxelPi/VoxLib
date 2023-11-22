@@ -42,6 +42,10 @@ public data class MutablePosition2F(
         return vector2F(x - other.x, y - other.y)
     }
 
+    override fun to(position: Position2<Float>): Vector2F {
+        return vector2F(position.x - x, position.y - y)
+    }
+
     override fun copy(): Position2F {
         return MutablePosition2F(x, y)
     }

@@ -12,6 +12,8 @@ public interface Position3I : Position3<Int> {
 
     override fun minus(other: Position3<Int>): Vector3I
 
+    override fun to(position: Position3<Int>): Vector3I
+
     override fun copy(): Position3I
 
     override fun mutableCopy(): MutablePosition3I

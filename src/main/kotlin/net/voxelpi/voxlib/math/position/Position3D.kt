@@ -12,6 +12,8 @@ public interface Position3D : Position3<Double> {
 
     override fun minus(other: Position3<Double>): Vector3D
 
+    override fun to(position: Position3<Double>): Vector3D
+
     override fun copy(): Position3D
 
     override fun mutableCopy(): MutablePosition3D

@@ -47,6 +47,10 @@ public data class MutablePosition3D(
         return vector3D(x - other.x, y - other.y, z - other.z)
     }
 
+    override fun to(position: Position3<Double>): Vector3D {
+        return vector3D(position.x - x, position.y - y, position.z - z)
+    }
+
     override fun copy(): Position3D {
         return MutablePosition3D(x, y, z)
     }

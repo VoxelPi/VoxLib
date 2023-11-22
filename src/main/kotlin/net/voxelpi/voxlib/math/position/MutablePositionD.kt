@@ -64,6 +64,12 @@ public data class MutablePositionD(val data: DoubleArray) : PositionD, MutablePo
         }
     }
 
+    override fun to(position: Position<Double>): VectorD {
+        return MutableVectorD(size) { index ->
+            position[index] - this[index]
+        }
+    }
+
     override fun copy(): PositionD {
         return MutablePositionD(data.copyOf())
     }
