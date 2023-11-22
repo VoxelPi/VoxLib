@@ -7,6 +7,7 @@ import net.voxelpi.voxlib.math.position.mutablePosition2I
 import net.voxelpi.voxlib.math.position.position2I
 import kotlin.math.atan2
 import kotlin.math.sqrt
+import kotlin.random.Random
 
 public data class MutableVector2I(
     override var x: Int,
@@ -109,5 +110,43 @@ public data class MutableVector2I(
 
     override fun angle(): Double {
         return atan2(y.toDouble(), x.toDouble())
+    }
+
+    public companion object {
+
+        /**
+         * Returns a new vector with the given components.
+         */
+        public fun vector(x: Int, y: Int): MutableVector2I {
+            return MutableVector2I(x, y)
+        }
+
+        /**
+         * Returns a new vector where each component is equal to [value].
+         */
+        public fun value(value: Int): MutableVector2I {
+            return MutableVector2I(value, value)
+        }
+
+        /**
+         * Generates a random vector.
+         */
+        public fun random(): MutableVector2I {
+            return MutableVector2I(Random.nextInt(), Random.nextInt())
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(from: Int, until: Int): MutableVector2I {
+            return MutableVector2I(Random.nextInt(from, until), Random.nextInt(from, until))
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(from: Vector2<Int>, until: Vector2<Int>): MutableVector2I {
+            return MutableVector2I(Random.nextInt(from.x, until.x), Random.nextInt(from.y, until.y))
+        }
     }
 }

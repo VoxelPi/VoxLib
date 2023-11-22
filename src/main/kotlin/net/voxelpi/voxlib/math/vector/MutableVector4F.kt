@@ -6,6 +6,7 @@ import net.voxelpi.voxlib.math.position.Position4F
 import net.voxelpi.voxlib.math.position.mutablePosition4F
 import net.voxelpi.voxlib.math.position.position4F
 import kotlin.math.sqrt
+import kotlin.random.Random
 
 public data class MutableVector4F(
     override var x: Float,
@@ -126,5 +127,58 @@ public data class MutableVector4F(
     public fun normalize(): MutableVector4F {
         this /= length()
         return this
+    }
+
+    public companion object {
+
+        /**
+         * Returns a new vector with the given components.
+         */
+        public fun vector(x: Float, y: Float, z: Float, w: Float): MutableVector4F {
+            return MutableVector4F(x, y, z, w)
+        }
+
+        /**
+         * Returns a new vector where each component is equal to [value].
+         */
+        public fun value(value: Float): MutableVector4F {
+            return MutableVector4F(value, value, value, value)
+        }
+
+        /**
+         * Generates a random vector.
+         */
+        public fun random(): MutableVector4F {
+            return MutableVector4F(
+                Random.nextFloat(),
+                Random.nextFloat(),
+                Random.nextFloat(),
+                Random.nextFloat(),
+            )
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(from: Float, until: Float): MutableVector4F {
+            return MutableVector4F(
+                Random.nextFloat() * (until - from) + from,
+                Random.nextFloat() * (until - from) + from,
+                Random.nextFloat() * (until - from) + from,
+                Random.nextFloat() * (until - from) + from,
+            )
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(from: Vector4<Float>, until: Vector4<Float>): MutableVector4F {
+            return MutableVector4F(
+                Random.nextFloat() * (until.x - from.x) + from.x,
+                Random.nextFloat() * (until.y - from.y) + from.y,
+                Random.nextFloat() * (until.z - from.z) + from.z,
+                Random.nextFloat() * (until.w - from.w) + from.w,
+            )
+        }
     }
 }

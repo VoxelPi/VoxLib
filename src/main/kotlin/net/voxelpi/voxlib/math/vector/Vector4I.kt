@@ -3,6 +3,7 @@ package net.voxelpi.voxlib.math.vector
 import net.voxelpi.voxlib.math.position.MutablePosition4I
 import net.voxelpi.voxlib.math.position.Position4
 import net.voxelpi.voxlib.math.position.Position4I
+import kotlin.random.Random
 
 public interface Vector4I : Vector4<Int> {
 
@@ -44,4 +45,57 @@ public interface Vector4I : Vector4<Int> {
     override fun mutablePosition(): MutablePosition4I
 
     override fun mutablePosition(origin: Position4<Int>): MutablePosition4I
+
+    public companion object {
+
+        /**
+         * Returns a new vector with the given components.
+         */
+        public fun vector(x: Int, y: Int, z: Int, w: Int): Vector4I {
+            return MutableVector4I(x, y, z, w)
+        }
+
+        /**
+         * Returns a new vector where each component is equal to [value].
+         */
+        public fun value(value: Int): Vector4I {
+            return MutableVector4I(value, value, value, value)
+        }
+
+        /**
+         * Generates a random vector.
+         */
+        public fun random(): Vector4I {
+            return MutableVector4I(
+                Random.nextInt(),
+                Random.nextInt(),
+                Random.nextInt(),
+                Random.nextInt(),
+            )
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(from: Int, until: Int): Vector4I {
+            return MutableVector4I(
+                Random.nextInt(from, until),
+                Random.nextInt(from, until),
+                Random.nextInt(from, until),
+                Random.nextInt(from, until),
+            )
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(from: Vector4<Int>, until: Vector4<Int>): Vector4I {
+            return MutableVector4I(
+                Random.nextInt(from.x, until.x),
+                Random.nextInt(from.y, until.y),
+                Random.nextInt(from.z, until.z),
+                Random.nextInt(from.w, until.w),
+            )
+        }
+    }
 }

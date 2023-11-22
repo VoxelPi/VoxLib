@@ -4,6 +4,7 @@ import net.voxelpi.voxlib.math.position.MutablePositionI
 import net.voxelpi.voxlib.math.position.Position
 import net.voxelpi.voxlib.math.position.PositionI
 import kotlin.math.sqrt
+import kotlin.random.Random
 
 public data class MutableVectorI(val data: IntArray) : VectorI, MutableVector<Int> {
 
@@ -176,5 +177,49 @@ public data class MutableVectorI(val data: IntArray) : VectorI, MutableVector<In
 
     override fun hashCode(): Int {
         return data.contentHashCode()
+    }
+
+    public companion object {
+
+        /**
+         * Returns a new vector with the given components.
+         */
+        public fun vector(vararg data: Int): MutableVectorI {
+            return MutableVectorI(data)
+        }
+
+        /**
+         * Returns a new vector where each component is equal to [value].
+         */
+        public fun value(size: Int, value: Int): MutableVectorI {
+            return MutableVectorI(size) { value }
+        }
+
+        /**
+         * Generates a random vector.
+         */
+        public fun random(size: Int): MutableVectorI {
+            return MutableVectorI(size) {
+                Random.nextInt()
+            }
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(size: Int, from: Int, until: Int): MutableVectorI {
+            return MutableVectorI(size) {
+                Random.nextInt(from, until)
+            }
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(size: Int, from: Vector<Int>, until: Vector<Int>): MutableVectorI {
+            return MutableVectorI(size) { i ->
+                Random.nextInt(from[i], until[i])
+            }
+        }
     }
 }

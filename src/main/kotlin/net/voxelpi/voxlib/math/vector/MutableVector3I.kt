@@ -6,6 +6,7 @@ import net.voxelpi.voxlib.math.position.Position3I
 import net.voxelpi.voxlib.math.position.mutablePosition3I
 import net.voxelpi.voxlib.math.position.position3I
 import kotlin.math.sqrt
+import kotlin.random.Random
 
 public data class MutableVector3I(
     override var x: Int,
@@ -111,5 +112,55 @@ public data class MutableVector3I(
 
     override fun normalized(): Vector3D {
         return this.toDouble() / length()
+    }
+
+    public companion object {
+
+        /**
+         * Returns a new vector with the given components.
+         */
+        public fun vector(x: Int, y: Int, z: Int): MutableVector3I {
+            return MutableVector3I(x, y, z)
+        }
+
+        /**
+         * Returns a new vector where each component is equal to [value].
+         */
+        public fun value(value: Int): MutableVector3I {
+            return MutableVector3I(value, value, value)
+        }
+
+        /**
+         * Generates a random vector.
+         */
+        public fun random(): MutableVector3I {
+            return MutableVector3I(
+                Random.nextInt(),
+                Random.nextInt(),
+                Random.nextInt(),
+            )
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(from: Int, until: Int): MutableVector3I {
+            return MutableVector3I(
+                Random.nextInt(from, until),
+                Random.nextInt(from, until),
+                Random.nextInt(from, until),
+            )
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(from: Vector3<Int>, until: Vector3<Int>): MutableVector3I {
+            return MutableVector3I(
+                Random.nextInt(from.x, until.x),
+                Random.nextInt(from.y, until.y),
+                Random.nextInt(from.z, until.z),
+            )
+        }
     }
 }

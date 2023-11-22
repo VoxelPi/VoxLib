@@ -5,6 +5,7 @@ import net.voxelpi.voxlib.math.position.Position
 import net.voxelpi.voxlib.math.position.PositionD
 import kotlin.math.pow
 import kotlin.math.sqrt
+import kotlin.random.Random
 
 public data class MutableVectorD(val data: DoubleArray) : VectorD, MutableVector<Double> {
 
@@ -185,5 +186,49 @@ public data class MutableVectorD(val data: DoubleArray) : VectorD, MutableVector
 
     override fun hashCode(): Int {
         return data.contentHashCode()
+    }
+
+    public companion object {
+
+        /**
+         * Returns a new vector with the given components.
+         */
+        public fun vector(vararg data: Double): MutableVectorD {
+            return MutableVectorD(data)
+        }
+
+        /**
+         * Returns a new vector where each component is equal to [value].
+         */
+        public fun value(size: Int, value: Double): MutableVectorD {
+            return MutableVectorD(size) { value }
+        }
+
+        /**
+         * Generates a random vector.
+         */
+        public fun random(size: Int): MutableVectorD {
+            return MutableVectorD(size) {
+                Random.nextDouble()
+            }
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(size: Int, from: Double, until: Double): MutableVectorD {
+            return MutableVectorD(size) {
+                Random.nextDouble(from, until)
+            }
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(size: Int, from: Vector<Double>, until: Vector<Double>): MutableVectorD {
+            return MutableVectorD(size) { i ->
+                Random.nextDouble(from[i], until[i])
+            }
+        }
     }
 }

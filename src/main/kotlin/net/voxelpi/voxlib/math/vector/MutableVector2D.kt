@@ -5,8 +5,12 @@ import net.voxelpi.voxlib.math.position.Position2
 import net.voxelpi.voxlib.math.position.Position2D
 import net.voxelpi.voxlib.math.position.mutablePosition2D
 import net.voxelpi.voxlib.math.position.position2D
+import kotlin.math.PI
 import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.sin
 import kotlin.math.sqrt
+import kotlin.random.Random
 
 public data class MutableVector2D(
     override var x: Double,
@@ -117,5 +121,67 @@ public data class MutableVector2D(
 
     override fun angle(): Double {
         return atan2(y, x)
+    }
+
+    public companion object {
+
+        /**
+         * Returns a new vector with the given components.
+         */
+        public fun vector(x: Double, y: Double): MutableVector2D {
+            return MutableVector2D(x, y)
+        }
+
+        /**
+         * Returns a new vector where each component is equal to [value].
+         */
+        public fun value(value: Double): MutableVector2D {
+            return MutableVector2D(value, value)
+        }
+
+        /**
+         * Returns a new vector with the given polar coordinates.
+         */
+        public fun polar(r: Double, phi: Double): MutableVector2D {
+            return MutableVector2D(r * cos(phi), r * sin(phi))
+        }
+
+        /**
+         * Generates a random vector.
+         */
+        public fun random(): MutableVector2D {
+            return MutableVector2D(Random.nextDouble(), Random.nextDouble())
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(from: Double, until: Double): MutableVector2D {
+            return MutableVector2D(Random.nextDouble(from, until), Random.nextDouble(from, until))
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(from: Vector2<Double>, until: Vector2<Double>): MutableVector2D {
+            return MutableVector2D(Random.nextDouble(from.x, until.x), Random.nextDouble(from.y, until.y))
+        }
+
+        /**
+         * Generates a random vector with a length less than the specified [radius].
+         */
+        public fun randomInsideCircle(radius: Double = 1.0): MutableVector2D {
+            val phi = Random.nextDouble() * 2 * PI
+            val r = radius * sqrt(Random.nextDouble())
+            return MutableVector2D(r * cos(phi), r * sin(phi))
+        }
+
+        /**
+         * Generates a random vector with a length equal to the specified [radius].
+         */
+        public fun randomOnCircle(radius: Double = 1.0): MutableVector2D {
+            val phi = Random.nextDouble() * 2 * PI
+            return MutableVector2D(cos(phi), sin(phi))
+        }
     }
 }

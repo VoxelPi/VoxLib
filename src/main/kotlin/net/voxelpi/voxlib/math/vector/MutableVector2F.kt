@@ -5,8 +5,12 @@ import net.voxelpi.voxlib.math.position.Position2
 import net.voxelpi.voxlib.math.position.Position2F
 import net.voxelpi.voxlib.math.position.mutablePosition2F
 import net.voxelpi.voxlib.math.position.position2F
+import kotlin.math.PI
 import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.sin
 import kotlin.math.sqrt
+import kotlin.random.Random
 
 public data class MutableVector2F(
     override var x: Float,
@@ -117,5 +121,73 @@ public data class MutableVector2F(
 
     override fun angle(): Float {
         return atan2(y, x)
+    }
+
+    public companion object {
+
+        /**
+         * Returns a new vector with the given components.
+         */
+        public fun vector(x: Float, y: Float): MutableVector2F {
+            return MutableVector2F(x, y)
+        }
+
+        /**
+         * Returns a new vector where each component is equal to [value].
+         */
+        public fun value(value: Float): MutableVector2F {
+            return MutableVector2F(value, value)
+        }
+
+        /**
+         * Returns a new vector with the given polar coordinates.
+         */
+        public fun polar(r: Float, phi: Float): MutableVector2F {
+            return MutableVector2F(r * cos(phi), r * sin(phi))
+        }
+
+        /**
+         * Generates a random vector.
+         */
+        public fun random(): MutableVector2F {
+            return MutableVector2F(Random.nextFloat(), Random.nextFloat())
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(from: Float, until: Float): MutableVector2F {
+            return MutableVector2F(
+                Random.nextFloat() * (until - from) + from,
+                Random.nextFloat() * (until - from) + from,
+            )
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(from: Vector2<Float>, until: Vector2<Float>): MutableVector2F {
+            return MutableVector2F(
+                Random.nextFloat() * (until.x - from.x) + from.x,
+                Random.nextFloat() * (until.y - from.y) + from.y,
+            )
+        }
+
+        /**
+         * Generates a random vector with a length less than the specified [radius].
+         */
+        public fun randomInsideCircle(radius: Float = 1F): MutableVector2F {
+            val phi = Random.nextFloat() * 2F * PI.toFloat()
+            val r = radius * sqrt(Random.nextFloat())
+            return MutableVector2F(r * cos(phi), r * sin(phi))
+        }
+
+        /**
+         * Generates a random vector with a length equal to the specified [radius].
+         */
+        public fun randomOnCircle(radius: Float = 1F): MutableVector2F {
+            val phi = Random.nextFloat() * 2F * PI.toFloat()
+            return MutableVector2F(cos(phi), sin(phi))
+        }
     }
 }

@@ -3,6 +3,7 @@ package net.voxelpi.voxlib.math.vector
 import net.voxelpi.voxlib.math.position.MutablePosition4D
 import net.voxelpi.voxlib.math.position.Position4
 import net.voxelpi.voxlib.math.position.Position4D
+import kotlin.random.Random
 
 public interface Vector4D : Vector4<Double> {
 
@@ -44,4 +45,57 @@ public interface Vector4D : Vector4<Double> {
     override fun mutablePosition(): MutablePosition4D
 
     override fun mutablePosition(origin: Position4<Double>): MutablePosition4D
+
+    public companion object {
+
+        /**
+         * Returns a new vector with the given components.
+         */
+        public fun vector(x: Double, y: Double, z: Double, w: Double): Vector4D {
+            return MutableVector4D(x, y, z, w)
+        }
+
+        /**
+         * Returns a new vector where each component is equal to [value].
+         */
+        public fun value(value: Double): Vector4D {
+            return MutableVector4D(value, value, value, value)
+        }
+
+        /**
+         * Generates a random vector.
+         */
+        public fun random(): Vector4D {
+            return MutableVector4D(
+                Random.nextDouble(),
+                Random.nextDouble(),
+                Random.nextDouble(),
+                Random.nextDouble(),
+            )
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(from: Double, until: Double): Vector4D {
+            return MutableVector4D(
+                Random.nextDouble(from, until),
+                Random.nextDouble(from, until),
+                Random.nextDouble(from, until),
+                Random.nextDouble(from, until),
+            )
+        }
+
+        /**
+         * Generates a random vector where each component lies in the specified range.
+         */
+        public fun random(from: Vector4<Double>, until: Vector4<Double>): Vector4D {
+            return MutableVector4D(
+                Random.nextDouble(from.x, until.x),
+                Random.nextDouble(from.y, until.y),
+                Random.nextDouble(from.z, until.z),
+                Random.nextDouble(from.w, until.w),
+            )
+        }
+    }
 }
