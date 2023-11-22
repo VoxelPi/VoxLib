@@ -5,6 +5,7 @@ import net.voxelpi.voxlib.math.position.Position2
 import net.voxelpi.voxlib.math.position.Position2F
 import net.voxelpi.voxlib.math.position.mutablePosition2F
 import net.voxelpi.voxlib.math.position.position2F
+import kotlin.math.atan2
 import kotlin.math.sqrt
 
 public data class MutableVector2F(
@@ -112,5 +113,9 @@ public data class MutableVector2F(
     public fun normalize(): MutableVector2F {
         this /= length()
         return this
+    }
+
+    override fun angle(): Float {
+        return atan2(y, x)
     }
 }

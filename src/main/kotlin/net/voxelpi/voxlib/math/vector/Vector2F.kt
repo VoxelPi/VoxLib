@@ -21,6 +21,11 @@ public interface Vector2F : Vector2<Float> {
      */
     public fun normalized(): Vector2F
 
+    /**
+     * Returns the angle theta of the polar coordinates (r, theta) that correspond to the rectangular coordinates (x, y).
+     */
+    public fun angle(): Float
+
     override fun unaryMinus(): Vector2F
 
     override fun unaryPlus(): Vector2F

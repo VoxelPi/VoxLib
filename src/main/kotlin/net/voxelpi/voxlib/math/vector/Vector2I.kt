@@ -21,6 +21,11 @@ public interface Vector2I : Vector2<Int> {
      */
     public fun normalized(): Vector2D
 
+    /**
+     * Returns the angle theta of the polar coordinates (r, theta) that correspond to the rectangular coordinates (x, y).
+     */
+    public fun angle(): Double
+
     override fun unaryMinus(): Vector2I
 
     override fun unaryPlus(): Vector2I
