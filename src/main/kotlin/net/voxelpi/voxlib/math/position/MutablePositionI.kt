@@ -1,6 +1,8 @@
 package net.voxelpi.voxlib.math.position
 
+import net.voxelpi.voxlib.math.vector.MutableVectorI
 import net.voxelpi.voxlib.math.vector.Vector
+import net.voxelpi.voxlib.math.vector.VectorI
 
 public data class MutablePositionI(val data: IntArray) : PositionI, MutablePosition<Int> {
 
@@ -52,6 +54,12 @@ public data class MutablePositionI(val data: IntArray) : PositionI, MutablePosit
 
     override fun minus(other: Vector<Int>): MutablePositionI {
         return MutablePositionI(size) { index ->
+            this[index] - other[index]
+        }
+    }
+
+    override fun minus(other: Position<Int>): VectorI {
+        return MutableVectorI(size) { index ->
             this[index] - other[index]
         }
     }

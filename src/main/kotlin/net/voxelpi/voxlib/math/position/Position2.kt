@@ -19,6 +19,8 @@ public interface Position2<T : Number> {
 
     public operator fun minus(other: Vector2<T>): Position2<T>
 
+    public operator fun minus(other: Position2<T>): Vector2<T>
+
     /**
      * Creates an immutable copy of the position.
      */

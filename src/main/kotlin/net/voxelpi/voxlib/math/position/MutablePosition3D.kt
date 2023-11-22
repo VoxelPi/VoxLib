@@ -1,6 +1,8 @@
 package net.voxelpi.voxlib.math.position
 
 import net.voxelpi.voxlib.math.vector.Vector3
+import net.voxelpi.voxlib.math.vector.Vector3D
+import net.voxelpi.voxlib.math.vector.vector3D
 
 public data class MutablePosition3D(
     override var x: Double,
@@ -38,6 +40,10 @@ public data class MutablePosition3D(
 
     override fun minus(other: Vector3<Double>): MutablePosition3D {
         return MutablePosition3D(x - other.x, y - other.y, z - other.z)
+    }
+
+    override fun minus(other: Position3<Double>): Vector3D {
+        return vector3D(x - other.x, y - other.y, z - other.z)
     }
 
     override fun copy(): Position3D {

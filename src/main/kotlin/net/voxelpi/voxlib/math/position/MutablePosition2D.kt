@@ -1,6 +1,8 @@
 package net.voxelpi.voxlib.math.position
 
 import net.voxelpi.voxlib.math.vector.Vector2
+import net.voxelpi.voxlib.math.vector.Vector2D
+import net.voxelpi.voxlib.math.vector.vector2D
 
 public data class MutablePosition2D(
     override var x: Double,
@@ -33,6 +35,10 @@ public data class MutablePosition2D(
 
     override fun minus(other: Vector2<Double>): MutablePosition2D {
         return MutablePosition2D(x - other.x, y - other.y)
+    }
+
+    override fun minus(other: Position2<Double>): Vector2D {
+        return vector2D(x - other.x, y - other.y)
     }
 
     override fun copy(): Position2D {

@@ -1,6 +1,8 @@
 package net.voxelpi.voxlib.math.position
 
 import net.voxelpi.voxlib.math.vector.Vector4
+import net.voxelpi.voxlib.math.vector.Vector4I
+import net.voxelpi.voxlib.math.vector.vector4I
 
 public data class MutablePosition4I(
     override var x: Int,
@@ -43,6 +45,10 @@ public data class MutablePosition4I(
 
     override fun minus(other: Vector4<Int>): MutablePosition4I {
         return MutablePosition4I(x - other.x, y - other.y, z - other.z, w - other.w)
+    }
+
+    override fun minus(other: Position4<Int>): Vector4I {
+        return vector4I(x - other.x, y - other.y, z - other.z, w - other.w)
     }
 
     override fun copy(): Position4I {
