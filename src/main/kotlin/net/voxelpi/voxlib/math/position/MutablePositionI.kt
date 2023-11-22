@@ -72,6 +72,14 @@ public data class MutablePositionI(val data: IntArray) : PositionI, MutablePosit
         return MutablePositionI(data.copyOf())
     }
 
+    override fun vector(): VectorI {
+        return MutableVectorI(data.copyOf())
+    }
+
+    override fun mutableVector(): MutableVectorI {
+        return MutableVectorI(data.copyOf())
+    }
+
     override fun isEmpty(): Boolean {
         return data.isEmpty()
     }

@@ -1,5 +1,6 @@
 package net.voxelpi.voxlib.math.position
 
+import net.voxelpi.voxlib.math.vector.MutableVector
 import net.voxelpi.voxlib.math.vector.Vector
 
 /**
@@ -32,6 +33,16 @@ public interface Position<T : Number> : Collection<T> {
      * Creates a mutable copy of the position.
      */
     public fun mutableCopy(): MutablePosition<T>
+
+    /**
+     * Returns the offset from the origin as vector.
+     */
+    public fun vector(): Vector<T>
+
+    /**
+     * Returns the offset from the origin as mutable vector.
+     */
+    public fun mutableVector(): MutableVector<T>
 
     /**
      * Returns the value of this position as a PositionD, which may involve rounding.

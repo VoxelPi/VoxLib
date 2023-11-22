@@ -72,6 +72,14 @@ public data class MutablePositionF(val data: FloatArray) : PositionF, MutablePos
         return MutablePositionF(data.copyOf())
     }
 
+    override fun vector(): VectorF {
+        return MutableVectorF(data.copyOf())
+    }
+
+    override fun mutableVector(): MutableVectorF {
+        return MutableVectorF(data.copyOf())
+    }
+
     override fun isEmpty(): Boolean {
         return data.isEmpty()
     }

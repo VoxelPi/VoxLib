@@ -1,5 +1,6 @@
 package net.voxelpi.voxlib.math.position
 
+import net.voxelpi.voxlib.math.vector.MutableVector2I
 import net.voxelpi.voxlib.math.vector.Vector2
 import net.voxelpi.voxlib.math.vector.Vector2I
 import net.voxelpi.voxlib.math.vector.vector2I
@@ -47,5 +48,13 @@ public data class MutablePosition2I(
 
     override fun mutableCopy(): MutablePosition2I {
         return MutablePosition2I(x, y)
+    }
+
+    override fun vector(): Vector2I {
+        return MutableVector2I(x, y)
+    }
+
+    override fun mutableVector(): MutableVector2I {
+        return MutableVector2I(x, y)
     }
 }

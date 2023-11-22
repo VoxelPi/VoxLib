@@ -1,5 +1,6 @@
 package net.voxelpi.voxlib.math.position
 
+import net.voxelpi.voxlib.math.vector.MutableVector3F
 import net.voxelpi.voxlib.math.vector.Vector3
 import net.voxelpi.voxlib.math.vector.Vector3F
 import net.voxelpi.voxlib.math.vector.vector3F
@@ -52,5 +53,13 @@ public data class MutablePosition3F(
 
     override fun mutableCopy(): MutablePosition3F {
         return MutablePosition3F(x, y, z)
+    }
+
+    override fun vector(): Vector3F {
+        return MutableVector3F(x, y, z)
+    }
+
+    override fun mutableVector(): MutableVector3F {
+        return MutableVector3F(x, y, z)
     }
 }

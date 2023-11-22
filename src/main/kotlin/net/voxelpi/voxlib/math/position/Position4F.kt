@@ -1,5 +1,6 @@
 package net.voxelpi.voxlib.math.position
 
+import net.voxelpi.voxlib.math.vector.MutableVector4F
 import net.voxelpi.voxlib.math.vector.Vector4
 import net.voxelpi.voxlib.math.vector.Vector4F
 
@@ -14,4 +15,8 @@ public interface Position4F : Position4<Float> {
     override fun copy(): Position4F
 
     override fun mutableCopy(): MutablePosition4F
+
+    override fun vector(): Vector4F
+
+    override fun mutableVector(): MutableVector4F
 }

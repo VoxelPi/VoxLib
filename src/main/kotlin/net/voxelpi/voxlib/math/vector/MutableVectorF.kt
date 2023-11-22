@@ -3,8 +3,6 @@ package net.voxelpi.voxlib.math.vector
 import net.voxelpi.voxlib.math.position.MutablePositionF
 import net.voxelpi.voxlib.math.position.Position
 import net.voxelpi.voxlib.math.position.PositionF
-import net.voxelpi.voxlib.math.position.mutablePosition
-import net.voxelpi.voxlib.math.position.position
 import kotlin.math.pow
 import kotlin.math.sqrt
 
@@ -117,19 +115,19 @@ public data class MutableVectorF(val data: FloatArray) : VectorF, MutableVector<
     }
 
     override fun position(): PositionF {
-        return position(*data)
+        return MutablePositionF(data)
     }
 
     override fun position(origin: Position<Float>): PositionF {
-        return position(*FloatArray(size) { i -> origin[i] + data[i] })
+        return MutablePositionF(FloatArray(size) { i -> origin[i] + data[i] })
     }
 
     override fun mutablePosition(): MutablePositionF {
-        return mutablePosition(*data)
+        return MutablePositionF(data)
     }
 
     override fun mutablePosition(origin: Position<Float>): MutablePositionF {
-        return mutablePosition(*FloatArray(size) { i -> origin[i] + data[i] })
+        return MutablePositionF(FloatArray(size) { i -> origin[i] + data[i] })
     }
 
     override fun length(): Float {

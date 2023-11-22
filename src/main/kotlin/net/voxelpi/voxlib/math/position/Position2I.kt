@@ -1,5 +1,6 @@
 package net.voxelpi.voxlib.math.position
 
+import net.voxelpi.voxlib.math.vector.MutableVector2I
 import net.voxelpi.voxlib.math.vector.Vector2
 import net.voxelpi.voxlib.math.vector.Vector2I
 
@@ -14,4 +15,8 @@ public interface Position2I : Position2<Int> {
     override fun copy(): Position2I
 
     override fun mutableCopy(): MutablePosition2I
+
+    override fun vector(): Vector2I
+
+    override fun mutableVector(): MutableVector2I
 }
