@@ -184,4 +184,26 @@ class MutableVector3DTest {
         val vector = MutableVector3D(2.0, 3.0, -1.0)
         assertEquals(14.0, vector.lengthSquared())
     }
+
+    @Test
+    fun normalized() {
+        val vector = MutableVector3D(2.0, -3.0, -1.0)
+        val length = vector.length()
+        val normalized = vector.normalized()
+        assertEquals(1.0, normalized.length())
+        assertEquals(vector.x / length, normalized.x)
+        assertEquals(vector.y / length, normalized.y)
+        assertEquals(vector.z / length, normalized.z)
+    }
+
+    @Test
+    fun normalize() {
+        val normalized = MutableVector3D(2.0, -3.0, -1.0)
+        val length = normalized.length()
+        normalized.normalize()
+        assertEquals(1.0, normalized.length())
+        assertEquals(2.0 / length, normalized.x)
+        assertEquals(-3.0 / length, normalized.y)
+        assertEquals(-1.0 / length, normalized.z)
+    }
 }

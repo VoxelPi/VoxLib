@@ -101,4 +101,16 @@ public data class MutableVector2D(
     override fun lengthSquared(): Double {
         return x * x + y * y
     }
+
+    override fun normalized(): Vector2D {
+        return this / length()
+    }
+
+    /**
+     * Scales the vector by 1 divided by its own length.
+     */
+    public fun normalize(): MutableVector2D {
+        this /= length()
+        return this
+    }
 }

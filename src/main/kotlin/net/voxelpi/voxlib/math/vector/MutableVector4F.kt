@@ -115,4 +115,16 @@ public data class MutableVector4F(
     override fun lengthSquared(): Float {
         return x * x + y * y + z * z + w * w
     }
+
+    override fun normalized(): Vector4F {
+        return this / length()
+    }
+
+    /**
+     * Scales the vector by 1 divided by its own length.
+     */
+    public fun normalize(): MutableVector4F {
+        this /= length()
+        return this
+    }
 }

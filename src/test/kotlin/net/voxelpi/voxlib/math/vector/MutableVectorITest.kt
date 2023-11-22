@@ -222,4 +222,15 @@ class MutableVectorITest {
         val vector = MutableVectorI(intArrayOf(2, 3, -1))
         assertEquals(14, vector.lengthSquared())
     }
+
+    @Test
+    fun normalized() {
+        val vector = MutableVectorI(intArrayOf(2, 3, -1))
+        val length = vector.length()
+        val normalized = vector.normalized()
+        assertEquals(1.0, normalized.length())
+        for (i in vector.data.indices) {
+            assertEquals(vector[i] / length, normalized[i])
+        }
+    }
 }

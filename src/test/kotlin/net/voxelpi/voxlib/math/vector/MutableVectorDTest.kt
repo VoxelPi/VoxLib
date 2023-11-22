@@ -222,4 +222,27 @@ class MutableVectorDTest {
         val vector = MutableVectorD(doubleArrayOf(2.0, 3.0, -1.0))
         assertEquals(14.0, vector.lengthSquared())
     }
+
+    @Test
+    fun normalized() {
+        val vector = MutableVectorD(doubleArrayOf(2.0, 3.0, -1.0))
+        val length = vector.length()
+        val normalized = vector.normalized()
+        assertEquals(1.0, normalized.length())
+        for (i in vector.data.indices) {
+            assertEquals(vector[i] / length, normalized[i])
+        }
+    }
+
+    @Test
+    fun normalize() {
+        val data = doubleArrayOf(2.0, 3.0, -1.0)
+        val normalized = MutableVectorD(data.copyOf())
+        val length = normalized.length()
+        normalized.normalize()
+        assertEquals(1.0, normalized.length())
+        for (i in data.indices) {
+            assertEquals(data[i] / length, normalized[i])
+        }
+    }
 }

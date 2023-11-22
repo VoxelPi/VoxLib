@@ -170,4 +170,24 @@ class MutableVector2FTest {
         val vector = MutableVector2F(2F, -3F)
         assertEquals(13F, vector.lengthSquared())
     }
+
+    @Test
+    fun normalized() {
+        val vector = MutableVector2F(2F, -3F)
+        val length = vector.length()
+        val normalized = vector.normalized()
+        assertEquals(1F, normalized.length(), 1e-6F)
+        assertEquals(vector.x / length, normalized.x, 1e-6F)
+        assertEquals(vector.y / length, normalized.y, 1e-6F)
+    }
+
+    @Test
+    fun normalize() {
+        val normalized = MutableVector2F(2F, -3F)
+        val length = normalized.length()
+        normalized.normalize()
+        assertEquals(1F, normalized.length(), 1e-6F)
+        assertEquals(2F / length, normalized.x, 1e-6F)
+        assertEquals(-3F / length, normalized.y, 1e-6F)
+    }
 }

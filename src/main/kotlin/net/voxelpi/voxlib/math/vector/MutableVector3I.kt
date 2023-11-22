@@ -108,4 +108,8 @@ public data class MutableVector3I(
     override fun lengthSquared(): Int {
         return x * x + y * y + z * z
     }
+
+    override fun normalized(): Vector3D {
+        return this.toDouble() / length()
+    }
 }

@@ -6,9 +6,20 @@ import net.voxelpi.voxlib.math.position.Position3F
 
 public interface Vector3F : Vector3<Float> {
 
+    /**
+     * Returns the Euclidean norm of the vector.
+     */
     public fun length(): Float
 
+    /**
+     * Returns the square of the Euclidean norm of the vector.
+     */
     public fun lengthSquared(): Float
+
+    /**
+     * Returns a copy of the vector that is scaled by 1 divided by the length of the vector.
+     */
+    public fun normalized(): Vector3F
 
     override fun unaryMinus(): Vector3F
 

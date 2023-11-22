@@ -108,4 +108,16 @@ public data class MutableVector3D(
     override fun lengthSquared(): Double {
         return x * x + y * y + z * z
     }
+
+    override fun normalized(): Vector3D {
+        return this / length()
+    }
+
+    /**
+     * Scales the vector by 1 divided by its own length.
+     */
+    public fun normalize(): MutableVector3D {
+        this /= length()
+        return this
+    }
 }

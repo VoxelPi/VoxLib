@@ -101,4 +101,8 @@ public data class MutableVector2I(
     override fun lengthSquared(): Int {
         return x * x + y * y
     }
+
+    override fun normalized(): Vector2D {
+        return this.toDouble() / length()
+    }
 }

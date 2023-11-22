@@ -146,6 +146,18 @@ public data class MutableVectorF(val data: FloatArray) : VectorF, MutableVector<
         return sum
     }
 
+    override fun normalized(): VectorF {
+        return this / length()
+    }
+
+    /**
+     * Scales the vector by 1 divided by its own length.
+     */
+    public fun normalize(): MutableVectorF {
+        this /= length()
+        return this
+    }
+
     override fun isEmpty(): Boolean {
         return data.isEmpty()
     }

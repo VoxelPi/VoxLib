@@ -222,4 +222,27 @@ class MutableVectorFTest {
         val vector = MutableVectorF(floatArrayOf(2F, 3F, -1F))
         assertEquals(14F, vector.lengthSquared())
     }
+
+    @Test
+    fun normalized() {
+        val vector = MutableVectorF(floatArrayOf(2F, 3F, -1F))
+        val length = vector.length()
+        val normalized = vector.normalized()
+        assertEquals(1F, normalized.length(), 1e-6F)
+        for (i in vector.data.indices) {
+            assertEquals(vector[i] / length, normalized[i], 1e-6F)
+        }
+    }
+
+    @Test
+    fun normalize() {
+        val data = floatArrayOf(2F, 3F, -1F)
+        val normalized = MutableVectorF(data.copyOf())
+        val length = normalized.length()
+        normalized.normalize()
+        assertEquals(1F, normalized.length(), 1e-6F)
+        for (i in data.indices) {
+            assertEquals(data[i] / length, normalized[i], 1e-6F)
+        }
+    }
 }

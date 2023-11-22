@@ -145,6 +145,10 @@ public data class MutableVectorI(val data: IntArray) : VectorI, MutableVector<In
         return sum
     }
 
+    override fun normalized(): VectorD {
+        return this.toDouble() / length()
+    }
+
     override fun isEmpty(): Boolean {
         return data.isEmpty()
     }

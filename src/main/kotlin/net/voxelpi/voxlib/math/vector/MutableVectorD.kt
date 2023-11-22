@@ -146,6 +146,18 @@ public data class MutableVectorD(val data: DoubleArray) : VectorD, MutableVector
         return sum
     }
 
+    override fun normalized(): VectorD {
+        return this / length()
+    }
+
+    /**
+     * Scales the vector by 1 divided by its own length.
+     */
+    public fun normalize(): MutableVectorD {
+        this /= length()
+        return this
+    }
+
     override fun isEmpty(): Boolean {
         return data.isEmpty()
     }

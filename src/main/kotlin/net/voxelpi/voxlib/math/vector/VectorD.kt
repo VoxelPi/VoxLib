@@ -6,9 +6,20 @@ import net.voxelpi.voxlib.math.position.PositionD
 
 public interface VectorD : Vector<Double> {
 
+    /**
+     * Returns the Euclidean norm of the vector.
+     */
     public fun length(): Double
 
+    /**
+     * Returns the square of the Euclidean norm of the vector.
+     */
     public fun lengthSquared(): Double
+
+    /**
+     * Returns a copy of the vector that is scaled by 1 divided by the length of the vector.
+     */
+    public fun normalized(): VectorD
 
     override fun unaryMinus(): VectorD
 
