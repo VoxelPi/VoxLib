@@ -1,5 +1,8 @@
 package net.voxelpi.voxlib.math.vector
 
+import net.voxelpi.voxlib.math.position.MutablePosition4
+import net.voxelpi.voxlib.math.position.Position4
+
 /**
  * A vector in a generic 4 dimensional vector space.
  */
@@ -47,6 +50,26 @@ public interface Vector4<T : Number> {
      * Creates a mutable copy of the vector.
      */
     public fun mutableCopy(): MutableVector4<T>
+
+    /**
+     * Returns a new position that is offset from the origin 0 by the current value of the vector.
+     */
+    public fun position(): Position4<T>
+
+    /**
+     * Returns a new position that is offset from the given [origin] by the current value of the vector.
+     */
+    public fun position(origin: Position4<T>): Position4<T>
+
+    /**
+     * Returns a new mutable position that is offset from the origin 0 by the current value of the vector.
+     */
+    public fun mutablePosition(): MutablePosition4<T>
+
+    /**
+     * Returns a new mutable position that is offset from the given [origin] by the current value of the vector.
+     */
+    public fun mutablePosition(origin: Position4<T>): MutablePosition4<T>
 
     /**
      * Returns the value of this vector as a Vector4D, which may involve rounding.

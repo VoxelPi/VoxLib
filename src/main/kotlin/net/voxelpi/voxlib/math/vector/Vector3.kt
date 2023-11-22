@@ -1,5 +1,8 @@
 package net.voxelpi.voxlib.math.vector
 
+import net.voxelpi.voxlib.math.position.MutablePosition3
+import net.voxelpi.voxlib.math.position.Position3
+
 /**
  * A vector in a generic 3 dimensional vector space.
  */
@@ -43,6 +46,26 @@ public interface Vector3<T : Number> {
      * Creates a mutable copy of the vector.
      */
     public fun mutableCopy(): MutableVector3<T>
+
+    /**
+     * Returns a new position that is offset from the origin 0 by the current value of the vector.
+     */
+    public fun position(): Position3<T>
+
+    /**
+     * Returns a new position that is offset from the given [origin] by the current value of the vector.
+     */
+    public fun position(origin: Position3<T>): Position3<T>
+
+    /**
+     * Returns a new mutable position that is offset from the origin 0 by the current value of the vector.
+     */
+    public fun mutablePosition(): MutablePosition3<T>
+
+    /**
+     * Returns a new mutable position that is offset from the given [origin] by the current value of the vector.
+     */
+    public fun mutablePosition(origin: Position3<T>): MutablePosition3<T>
 
     /**
      * Returns the value of this vector as a Vector3D, which may involve rounding.

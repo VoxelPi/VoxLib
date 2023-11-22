@@ -1,5 +1,10 @@
 package net.voxelpi.voxlib.math.vector
 
+import net.voxelpi.voxlib.math.position.MutablePositionD
+import net.voxelpi.voxlib.math.position.Position
+import net.voxelpi.voxlib.math.position.PositionD
+import net.voxelpi.voxlib.math.position.mutablePosition
+import net.voxelpi.voxlib.math.position.position
 import kotlin.math.pow
 import kotlin.math.sqrt
 
@@ -109,6 +114,22 @@ public data class MutableVectorD(val data: DoubleArray) : VectorD, MutableVector
 
     override fun mutableCopy(): MutableVectorD {
         return MutableVectorD(data.copyOf())
+    }
+
+    override fun position(): PositionD {
+        return position(*data)
+    }
+
+    override fun position(origin: Position<Double>): PositionD {
+        return position(*DoubleArray(size) { i -> origin[i] + data[i] })
+    }
+
+    override fun mutablePosition(): MutablePositionD {
+        return mutablePosition(*data)
+    }
+
+    override fun mutablePosition(origin: Position<Double>): MutablePositionD {
+        return mutablePosition(*DoubleArray(size) { i -> origin[i] + data[i] })
     }
 
     override fun length(): Double {

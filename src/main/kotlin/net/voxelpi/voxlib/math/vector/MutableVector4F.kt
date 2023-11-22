@@ -1,5 +1,10 @@
 package net.voxelpi.voxlib.math.vector
 
+import net.voxelpi.voxlib.math.position.MutablePosition4F
+import net.voxelpi.voxlib.math.position.Position4
+import net.voxelpi.voxlib.math.position.Position4F
+import net.voxelpi.voxlib.math.position.mutablePosition4F
+import net.voxelpi.voxlib.math.position.position4F
 import kotlin.math.sqrt
 
 public data class MutableVector4F(
@@ -85,6 +90,22 @@ public data class MutableVector4F(
 
     override fun mutableCopy(): MutableVector4F {
         return MutableVector4F(x, y, z, w)
+    }
+
+    override fun position(): Position4F {
+        return position4F(x, y, z, w)
+    }
+
+    override fun position(origin: Position4<Float>): Position4F {
+        return position4F(origin.x + x, origin.y + y, origin.z + z, origin.w + w)
+    }
+
+    override fun mutablePosition(): MutablePosition4F {
+        return mutablePosition4F(x, y, z, w)
+    }
+
+    override fun mutablePosition(origin: Position4<Float>): MutablePosition4F {
+        return mutablePosition4F(origin.x + x, origin.y + y, origin.z + z, origin.w + w)
     }
 
     override fun length(): Float {

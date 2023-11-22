@@ -1,5 +1,9 @@
 package net.voxelpi.voxlib.math.vector
 
+import net.voxelpi.voxlib.math.position.MutablePosition3D
+import net.voxelpi.voxlib.math.position.Position3
+import net.voxelpi.voxlib.math.position.Position3D
+
 public interface Vector3D : Vector3<Double> {
 
     public fun length(): Double
@@ -21,4 +25,12 @@ public interface Vector3D : Vector3<Double> {
     override fun copy(): Vector3D
 
     override fun mutableCopy(): MutableVector3D
+
+    override fun position(): Position3D
+
+    override fun position(origin: Position3<Double>): Position3D
+
+    override fun mutablePosition(): MutablePosition3D
+
+    override fun mutablePosition(origin: Position3<Double>): MutablePosition3D
 }

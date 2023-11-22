@@ -1,5 +1,10 @@
 package net.voxelpi.voxlib.math.vector
 
+import net.voxelpi.voxlib.math.position.MutablePosition2I
+import net.voxelpi.voxlib.math.position.Position2
+import net.voxelpi.voxlib.math.position.Position2I
+import net.voxelpi.voxlib.math.position.mutablePosition2I
+import net.voxelpi.voxlib.math.position.position2I
 import kotlin.math.sqrt
 
 public data class MutableVector2I(
@@ -71,6 +76,22 @@ public data class MutableVector2I(
 
     override fun mutableCopy(): MutableVector2I {
         return MutableVector2I(x, y)
+    }
+
+    override fun position(): Position2I {
+        return position2I(x, y)
+    }
+
+    override fun position(origin: Position2<Int>): Position2I {
+        return position2I(origin.x + x, origin.y + y)
+    }
+
+    override fun mutablePosition(): MutablePosition2I {
+        return mutablePosition2I(x, y)
+    }
+
+    override fun mutablePosition(origin: Position2<Int>): MutablePosition2I {
+        return mutablePosition2I(origin.x + x, origin.y + y)
     }
 
     override fun length(): Double {

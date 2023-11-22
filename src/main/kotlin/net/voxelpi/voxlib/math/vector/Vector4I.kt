@@ -1,5 +1,9 @@
 package net.voxelpi.voxlib.math.vector
 
+import net.voxelpi.voxlib.math.position.MutablePosition4I
+import net.voxelpi.voxlib.math.position.Position4
+import net.voxelpi.voxlib.math.position.Position4I
+
 public interface Vector4I : Vector4<Int> {
 
     public fun length(): Double
@@ -21,4 +25,12 @@ public interface Vector4I : Vector4<Int> {
     override fun copy(): Vector4I
 
     override fun mutableCopy(): MutableVector4I
+
+    override fun position(): Position4I
+
+    override fun position(origin: Position4<Int>): Position4I
+
+    override fun mutablePosition(): MutablePosition4I
+
+    override fun mutablePosition(origin: Position4<Int>): MutablePosition4I
 }
