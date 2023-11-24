@@ -113,7 +113,7 @@ public interface Vector2D : Vector2<Double> {
          */
         public fun randomOnCircle(radius: Double = 1.0): Vector2D {
             val phi = Random.nextDouble() * 2 * PI
-            return MutableVector2D(cos(phi), sin(phi))
+            return MutableVector2D(radius * cos(phi), radius * sin(phi))
         }
     }
 }

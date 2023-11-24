@@ -181,7 +181,7 @@ public data class MutableVector2D(
          */
         public fun randomOnCircle(radius: Double = 1.0): MutableVector2D {
             val phi = Random.nextDouble() * 2 * PI
-            return MutableVector2D(cos(phi), sin(phi))
+            return MutableVector2D(radius * cos(phi), radius * sin(phi))
         }
     }
 }
