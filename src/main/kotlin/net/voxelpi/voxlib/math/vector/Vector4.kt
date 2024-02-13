@@ -22,7 +22,7 @@ public interface Vector4<T : Number> {
 
     public operator fun component3(): T = z
 
-    public operator fun component4(): T = z
+    public operator fun component4(): T = w
 
     public operator fun unaryMinus(): Vector4<T>
 
