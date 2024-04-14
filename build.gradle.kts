@@ -1,12 +1,12 @@
 plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.dokka)
-    alias(libs.plugins.indra)
     alias(libs.plugins.indra.git)
-    alias(libs.plugins.indra.publishing)
     alias(libs.plugins.blossom)
     alias(libs.plugins.ktlint)
     `java-library`
+    `maven-publish`
+    signing
 }
 
 group = "net.voxelpi.voxlib"
@@ -25,9 +25,8 @@ dependencies {
 
     // Tests
     testImplementation(kotlin("test"))
-    testImplementation(libs.junit.jupiter.api)
-    testRuntimeOnly(libs.junit.jupiter.engine)
-    testRuntimeOnly(libs.junit.jupiter.platform.launcher)
+    testImplementation(platform(libs.junit.bom))
+    testImplementation(libs.junit.jupiter)
 }
 
 kotlin {
@@ -36,8 +35,6 @@ kotlin {
 }
 
 tasks {
-    val javaVersion = JavaVersion.VERSION_17
-
     dokkaHtml.configure {
         outputDirectory.set(layout.buildDirectory.dir("docs"))
     }
@@ -55,29 +52,90 @@ tasks {
             reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.CHECKSTYLE)
         }
     }
+}
 
-    indra {
-        mitLicense()
+val javadocJar by tasks.register<Jar>("dokkaJavadocJar") {
+    dependsOn(tasks.dokkaJavadoc)
+    from(tasks.dokkaJavadoc.flatMap { it.outputDirectory })
+    archiveClassifier.set("javadoc")
+}
 
-        javaVersions {
-            target(javaVersion.toString().toInt())
+val sourcesJar by tasks.creating(Jar::class) {
+    archiveClassifier.set("sources")
+    from(sourceSets.getByName("main").allSource)
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "VoxelPiRepo"
+            val releasesRepoUrl = "https://repo.voxelpi.net/repository/maven-releases/"
+            val snapshotsRepoUrl = "https://repo.voxelpi.net/repository/maven-snapshots/"
+            url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+            credentials {
+                username = findProperty("vpr.user") as String? ?: System.getenv("VOXELPI_REPO_USER")
+                password = findProperty("vpr.key") as String? ?: System.getenv("VOXELPI_REPO_KEY")
+            }
         }
+    }
 
-        github("VoxelPi", "VoxLib") {
-            ci(true)
-            issues(true)
-        }
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = project.group.toString()
+            artifactId = project.name
+            version = project.version.toString()
 
-        configurePublications {
+            from(components["kotlin"])
+            artifact(sourcesJar)
+            artifact(javadocJar)
+
             pom {
+                name = project.name
+                description = project.description
+                url = "https://github.com/voxelpi/voxlib"
+
+                licenses {
+                    license {
+                        name = "The MIT License"
+                        url = "https://opensource.org/licenses/MIT"
+                    }
+                }
+
                 developers {
                     developer {
-                        id.set("voxelpi")
-                        name.set("VoxelPi")
-                        url.set("https://voxelpi.net")
+                        id = "voxelpi"
+                        name = "Peter Smek"
+                        url = "https://voxelpi.net"
                     }
+                }
+
+                scm {
+                    connection = "scm:git:https://github.com/voxelpi/voxlib.git"
+                    developerConnection = "scm:git:ssh://git@github.com/voxelpi/voxlib.git"
+                    url = "https://github.com/voxelpi/voxlib"
+                }
+
+                issueManagement {
+                    system = "GitHub"
+                    url = "https://github.com/voxelpi/voxlib/issues"
+                }
+
+                ciManagement {
+                    system = "GitHub Actions"
+                    url = "https://github.com/voxelpi/voxlib/actions"
                 }
             }
         }
     }
+}
+
+signing {
+    val signingSecretKey = System.getenv("SIGNING_KEY")
+    val signingPassword = System.getenv("SIGNING_PASSWORD")
+    if (signingSecretKey != null && signingPassword != null) {
+        useInMemoryPgpKeys(signingSecretKey, signingPassword)
+    } else {
+        useGpgCmd()
+    }
+    sign(publishing.publications)
 }
