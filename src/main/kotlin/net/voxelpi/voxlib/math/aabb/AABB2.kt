@@ -56,7 +56,10 @@ public interface AABB2<T> where T : Number, T : Comparable<T> {
     /**
      * Returns if the given [position] lies on the boundary of the bounding box.
      */
-    public fun isOnBoundary(position: Position2<T>): Boolean
+    public fun isOnBoundary(position: Position2<T>): Boolean {
+        return (position.x == min.x || position.x == max.x) && (min.y <= position.y && position.y <= max.y)
+            || (position.y == min.y || position.y == max.y) && (max.x <= position.x && position.x <= max.x)
+    }
 
     /**
      * Returns a copy of this bounding box, that is expanded in every direction by [amount].

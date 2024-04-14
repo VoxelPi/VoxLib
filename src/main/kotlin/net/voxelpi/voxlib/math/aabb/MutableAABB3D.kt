@@ -5,6 +5,7 @@ import net.voxelpi.voxlib.math.position.Position3
 import net.voxelpi.voxlib.math.vector.Vector3D
 import net.voxelpi.voxlib.math.vector.vector3D
 import kotlin.math.abs
+import kotlin.math.min
 
 public data class MutableAABB3D(
     override var min: MutablePosition3D,
@@ -36,15 +37,13 @@ public data class MutableAABB3D(
         return MutableAABB3D(min - vector3D(amount, amount, amount), max + vector3D(amount, amount, amount))
     }
 
-    override fun isOnBoundary(position: Position3<Double>): Boolean {
-        return position.x == min.x || position.x == max.x
-            || position.y == min.y || position.y == max.y
-            || position.z == min.z || position.z == max.z
-    }
-
+    @Suppress("ktlint:standard:wrapping", "ktlint:standard:indent")
     override fun isOnBoundary(position: Position3<Double>, tolerance: Double): Boolean {
-        return abs(position.x - min.x) < tolerance || abs(position.x - max.x) < tolerance
-            || abs(position.y - min.y) < tolerance || abs(position.y - max.y) < tolerance
-            || abs(position.z - min.z) < tolerance || abs(position.z - max.z) < tolerance
+        return (min(abs(position.x - min.x), abs(position.x - max.x)) < tolerance
+            && (min.y <= position.y && position.y <= max.y) && (min.z <= position.z && position.z <= max.z))
+            || (min(abs(position.y - min.y), abs(position.y - max.y)) < tolerance
+            && (min.x <= position.x && position.x <= max.x) && (min.z <= position.z && position.z <= max.z))
+            || (min(abs(position.z - min.z), abs(position.z - max.z)) < tolerance
+            && (min.x <= position.x && position.x <= max.x) && (min.y <= position.y && position.y <= max.y))
     }
 }

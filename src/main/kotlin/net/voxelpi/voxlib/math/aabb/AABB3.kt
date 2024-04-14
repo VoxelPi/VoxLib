@@ -61,7 +61,15 @@ public interface AABB3<T> where T : Number, T : Comparable<T> {
     /**
      * Returns if the given [position] lies on the boundary of the bounding box.
      */
-    public fun isOnBoundary(position: Position3<T>): Boolean
+    @Suppress("ktlint:standard:wrapping", "ktlint:standard:indent")
+    public fun isOnBoundary(position: Position3<T>): Boolean {
+        return ((position.x == min.x || position.x == max.x)
+            && (min.y <= position.y && position.y <= max.y) && (min.z <= position.z && position.z <= max.z))
+            || ((position.y == min.y || position.y == max.y)
+            && (min.x <= position.x && position.x <= max.x) && (min.z <= position.z && position.z <= max.z))
+            || ((position.z == min.z || position.z == max.z)
+            && (min.x <= position.x && position.x <= max.x) && (min.y <= position.y && position.y <= max.y))
+    }
 
     /**
      * Returns a copy of this bounding box, that is expanded in every direction by [amount].

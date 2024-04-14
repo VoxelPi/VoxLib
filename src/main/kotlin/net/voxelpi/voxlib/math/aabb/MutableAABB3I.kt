@@ -1,7 +1,6 @@
 package net.voxelpi.voxlib.math.aabb
 
 import net.voxelpi.voxlib.math.position.MutablePosition3I
-import net.voxelpi.voxlib.math.position.Position3
 import net.voxelpi.voxlib.math.position.Position3I
 import net.voxelpi.voxlib.math.vector.Vector3I
 import net.voxelpi.voxlib.math.vector.vector3I
@@ -34,12 +33,6 @@ public data class MutableAABB3I(
 
     override fun expandedCopy(amount: Int): MutableAABB3I {
         return MutableAABB3I(min - vector3I(amount, amount, amount), max + vector3I(amount, amount, amount))
-    }
-
-    override fun isOnBoundary(position: Position3<Int>): Boolean {
-        return position.x == min.x || position.x == max.x
-            || position.y == min.y || position.y == max.y
-            || position.z == min.z || position.z == max.z
     }
 
     override fun iterator(): Iterator<Position3I> {

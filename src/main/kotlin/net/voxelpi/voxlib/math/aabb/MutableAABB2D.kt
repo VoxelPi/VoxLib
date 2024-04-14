@@ -5,6 +5,7 @@ import net.voxelpi.voxlib.math.position.Position2
 import net.voxelpi.voxlib.math.vector.Vector2D
 import net.voxelpi.voxlib.math.vector.vector2D
 import kotlin.math.abs
+import kotlin.math.min
 
 public data class MutableAABB2D(
     override var min: MutablePosition2D,
@@ -28,12 +29,8 @@ public data class MutableAABB2D(
         return MutableAABB2D(min - vector2D(amount, amount), max + vector2D(amount, amount))
     }
 
-    override fun isOnBoundary(position: Position2<Double>): Boolean {
-        return position.x == min.x || position.x == max.x || position.y == min.y || position.y == max.y
-    }
-
     override fun isOnBoundary(position: Position2<Double>, tolerance: Double): Boolean {
-        return abs(position.x - min.x) < tolerance || abs(position.x - max.x) < tolerance
-            || abs(position.y - min.y) < tolerance || abs(position.y - max.y) < tolerance
+        return min(abs(position.x - min.x), abs(position.x - max.x)) < tolerance && (min.y <= position.y && position.y <= max.y)
+            || min(abs(position.y - min.y), abs(position.y - max.y)) < tolerance && (min.x <= position.x && position.x <= max.x)
     }
 }

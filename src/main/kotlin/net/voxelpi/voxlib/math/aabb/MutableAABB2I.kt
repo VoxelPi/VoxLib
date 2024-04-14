@@ -1,7 +1,6 @@
 package net.voxelpi.voxlib.math.aabb
 
 import net.voxelpi.voxlib.math.position.MutablePosition2I
-import net.voxelpi.voxlib.math.position.Position2
 import net.voxelpi.voxlib.math.position.Position2I
 import net.voxelpi.voxlib.math.vector.Vector2I
 import net.voxelpi.voxlib.math.vector.vector2I
@@ -26,10 +25,6 @@ public data class MutableAABB2I(
 
     override fun expandedCopy(amount: Int): MutableAABB2I {
         return MutableAABB2I(min - vector2I(amount, amount), max + vector2I(amount, amount))
-    }
-
-    override fun isOnBoundary(position: Position2<Int>): Boolean {
-        return position.x == min.x || position.x == max.x || position.y == min.y || position.y == max.y
     }
 
     override fun iterator(): Iterator<Position2I> {
