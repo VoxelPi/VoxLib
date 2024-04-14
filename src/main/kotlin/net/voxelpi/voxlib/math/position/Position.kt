@@ -4,9 +4,9 @@ import net.voxelpi.voxlib.math.vector.MutableVector
 import net.voxelpi.voxlib.math.vector.Vector
 
 /**
- * A position in a n dimensional space.
+ * A position in a n-dimensional space.
  */
-public interface Position<T : Number> : Collection<T> {
+public interface Position<T> : Collection<T> where T : Number, T : Comparable<T> {
 
     /**
      * Returns the [index] element of the position.
@@ -28,6 +28,11 @@ public interface Position<T : Number> : Collection<T> {
      * Returns a vector that points from this position to the given [position].
      */
     public infix fun to(position: Position<T>): Vector<T>
+
+    /**
+     * Returns a new position that is relative to given [position].
+     */
+    public fun relativeTo(position: Position<T>): Position<T>
 
     /**
      * Creates an immutable copy of the position.

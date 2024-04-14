@@ -1,9 +1,9 @@
 package net.voxelpi.voxlib.math.vector
 
 /**
- * A vector in a generic 3 dimensional vector space.
+ * A vector in a 3-dimensional vector space.
  */
-public interface MutableVector3<T : Number> : Vector3<T> {
+public interface MutableVector3<T> : Vector3<T> where T : Number, T : Comparable<T> {
 
     override var x: T
 

@@ -4,9 +4,9 @@ import net.voxelpi.voxlib.math.position.MutablePosition3
 import net.voxelpi.voxlib.math.position.Position3
 
 /**
- * A vector in a generic 3 dimensional vector space.
+ * A vector in a 3-dimensional vector space.
  */
-public interface Vector3<T : Number> {
+public interface Vector3<T> where T : Number, T : Comparable<T> {
 
     public val x: T
 

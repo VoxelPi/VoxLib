@@ -4,9 +4,9 @@ import net.voxelpi.voxlib.math.position.MutablePosition4
 import net.voxelpi.voxlib.math.position.Position4
 
 /**
- * A vector in a generic 4 dimensional vector space.
+ * A vector in a 4-dimensional vector space.
  */
-public interface Vector4<T : Number> {
+public interface Vector4<T> where T : Number, T : Comparable<T> {
 
     public val x: T
 

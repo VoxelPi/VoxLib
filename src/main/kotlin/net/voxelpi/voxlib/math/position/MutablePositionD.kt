@@ -70,6 +70,12 @@ public data class MutablePositionD(val data: DoubleArray) : PositionD, MutablePo
         }
     }
 
+    override fun relativeTo(position: Position<Double>): PositionD {
+        return MutablePositionD(size) { index ->
+            this[index] - position[index]
+        }
+    }
+
     override fun copy(): PositionD {
         return MutablePositionD(data.copyOf())
     }

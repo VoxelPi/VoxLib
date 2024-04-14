@@ -3,9 +3,9 @@ package net.voxelpi.voxlib.math.position
 import net.voxelpi.voxlib.math.vector.Vector
 
 /**
- * A mutable position in a n dimensional space.
+ * A mutable position in a n-dimensional space.
  */
-public interface MutablePosition<T : Number> : Position<T> {
+public interface MutablePosition<T> : Position<T> where T : Number, T : Comparable<T> {
 
     /**
      * Sets the [index] element of the position to the given [value].

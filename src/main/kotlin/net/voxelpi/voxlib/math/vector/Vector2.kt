@@ -4,9 +4,9 @@ import net.voxelpi.voxlib.math.position.MutablePosition2
 import net.voxelpi.voxlib.math.position.Position2
 
 /**
- * A vector in a generic 2 dimensional vector space.
+ * A vector in a 2-dimensional vector space.
  */
-public interface Vector2<T : Number> {
+public interface Vector2<T> where T : Number, T : Comparable<T> {
 
     public val x: T
 

@@ -4,9 +4,9 @@ import net.voxelpi.voxlib.math.position.MutablePosition
 import net.voxelpi.voxlib.math.position.Position
 
 /**
- * A vector in a generic n dimensional vector space.
+ * A vector in a n-dimensional vector space.
  */
-public interface Vector<T : Number> : Collection<T> {
+public interface Vector<T> : Collection<T> where T : Number, T : Comparable<T> {
 
     /**
      * Returns the [index] element of the vector.

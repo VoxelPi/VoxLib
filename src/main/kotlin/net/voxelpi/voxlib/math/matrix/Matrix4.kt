@@ -3,9 +3,9 @@ package net.voxelpi.voxlib.math.matrix
 import net.voxelpi.voxlib.math.vector.Vector4
 
 /**
- * A generic 4x4 matrix.
+ * A 4x4 matrix.
  */
-public interface Matrix4<T : Number> {
+public interface Matrix4<T> where T : Number, T : Comparable<T> {
 
     /**
      * Returns the element in the [row] row and [column] column of the matrix.

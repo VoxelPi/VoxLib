@@ -1,9 +1,9 @@
 package net.voxelpi.voxlib.math.matrix
 
 /**
- * A generic mutable mxn matrix.
+ * A mutable nxm matrix.
  */
-public interface MutableMatrix<T : Number> : Matrix<T> {
+public interface MutableMatrix<T> : Matrix<T> where T : Number, T : Comparable<T> {
 
     /**
      * Sets the element in the [row] row and [column] column of the matrix to the given [value].

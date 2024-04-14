@@ -1,5 +1,6 @@
 package net.voxelpi.voxlib.math.position
 
+import net.voxelpi.voxlib.math.aabb.AABB3
 import net.voxelpi.voxlib.math.vector.MutableVector3I
 import net.voxelpi.voxlib.math.vector.Vector3
 import net.voxelpi.voxlib.math.vector.Vector3I
@@ -49,6 +50,14 @@ public data class MutablePosition3I(
 
     override fun to(position: Position3<Int>): Vector3I {
         return vector3I(position.x - x, position.y - y, position.z - z)
+    }
+
+    override fun relativeTo(position: Position3<Int>): Position3I {
+        return position3I(x - position.x, y - position.y, z - position.z)
+    }
+
+    override fun relativeTo(aabb: AABB3<Int>): Position3I {
+        return position3I(x - aabb.min.x, y - aabb.min.y, z - aabb.min.z)
     }
 
     override fun copy(): Position3I {

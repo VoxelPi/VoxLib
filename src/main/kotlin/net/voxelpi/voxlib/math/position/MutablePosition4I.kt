@@ -56,6 +56,10 @@ public data class MutablePosition4I(
         return vector4I(position.x - x, position.y - y, position.z - z, position.w - w)
     }
 
+    override fun relativeTo(position: Position4<Int>): Position4I {
+        return position4I(x - position.x, y - position.y, z - position.z, w - position.w)
+    }
+
     override fun copy(): Position4I {
         return MutablePosition4I(x, y, z, w)
     }

@@ -1,5 +1,6 @@
 package net.voxelpi.voxlib.math.position
 
+import net.voxelpi.voxlib.math.aabb.AABB2
 import net.voxelpi.voxlib.math.vector.MutableVector2F
 import net.voxelpi.voxlib.math.vector.Vector2
 import net.voxelpi.voxlib.math.vector.Vector2F
@@ -13,6 +14,10 @@ public interface Position2F : Position2<Float> {
     override fun minus(other: Position2<Float>): Vector2F
 
     override fun to(position: Position2<Float>): Vector2F
+
+    override fun relativeTo(position: Position2<Float>): Position2F
+
+    override fun relativeTo(aabb: AABB2<Float>): Position2F
 
     override fun copy(): Position2F
 

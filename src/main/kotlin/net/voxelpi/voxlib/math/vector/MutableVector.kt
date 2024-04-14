@@ -1,9 +1,9 @@
 package net.voxelpi.voxlib.math.vector
 
 /**
- * A mutable vector in a generic n dimensional vector space.
+ * A mutable vector in a n-dimensional vector space.
  */
-public interface MutableVector<T : Number> : Vector<T> {
+public interface MutableVector<T> : Vector<T> where T : Number, T : Comparable<T> {
 
     /**
      * Sets the [index] element of the vector to the given [value].

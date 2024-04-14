@@ -4,9 +4,9 @@ import net.voxelpi.voxlib.math.vector.MutableVector4
 import net.voxelpi.voxlib.math.vector.Vector4
 
 /**
- * A position in a 4 dimensional space.
+ * A position in a 4-dimensional space.
  */
-public interface Position4<T : Number> {
+public interface Position4<T> where T : Number, T : Comparable<T> {
 
     public val x: T
 
@@ -34,6 +34,11 @@ public interface Position4<T : Number> {
      * Returns a vector that points from this position to the given [position].
      */
     public infix fun to(position: Position4<T>): Vector4<T>
+
+    /**
+     * Returns a new position that is relative to given [position].
+     */
+    public fun relativeTo(position: Position4<T>): Position4<T>
 
     /**
      * Creates an immutable copy of the position.

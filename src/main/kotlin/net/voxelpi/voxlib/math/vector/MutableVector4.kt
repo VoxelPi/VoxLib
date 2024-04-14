@@ -1,9 +1,9 @@
 package net.voxelpi.voxlib.math.vector
 
 /**
- * A vector in a generic 4 dimensional vector space.
+ * A vector in a 4-dimensional vector space.
  */
-public interface MutableVector4<T : Number> : Vector4<T> {
+public interface MutableVector4<T> : Vector4<T> where T : Number, T : Comparable<T> {
 
     override var x: T
 

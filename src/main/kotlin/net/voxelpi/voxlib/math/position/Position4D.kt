@@ -14,6 +14,8 @@ public interface Position4D : Position4<Double> {
 
     override fun to(position: Position4<Double>): Vector4D
 
+    override fun relativeTo(position: Position4<Double>): Position4D
+
     override fun copy(): Position4D
 
     override fun mutableCopy(): MutablePosition4D

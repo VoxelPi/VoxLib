@@ -1,5 +1,6 @@
 package net.voxelpi.voxlib.math.position
 
+import net.voxelpi.voxlib.math.aabb.AABB2
 import net.voxelpi.voxlib.math.vector.MutableVector2F
 import net.voxelpi.voxlib.math.vector.Vector2
 import net.voxelpi.voxlib.math.vector.Vector2F
@@ -44,6 +45,14 @@ public data class MutablePosition2F(
 
     override fun to(position: Position2<Float>): Vector2F {
         return vector2F(position.x - x, position.y - y)
+    }
+
+    override fun relativeTo(position: Position2<Float>): Position2F {
+        return position2F(x - position.x, y - position.y)
+    }
+
+    override fun relativeTo(aabb: AABB2<Float>): Position2F {
+        return position2F(x - aabb.min.x, y - aabb.min.y)
     }
 
     override fun copy(): Position2F {

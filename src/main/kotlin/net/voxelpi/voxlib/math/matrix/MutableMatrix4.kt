@@ -1,6 +1,9 @@
 package net.voxelpi.voxlib.math.matrix
 
-public interface MutableMatrix4<T : Number> : Matrix4<T> {
+/**
+ * A mutable 4x4 matrix.
+ */
+public interface MutableMatrix4<T> : Matrix4<T> where T : Number, T : Comparable<T> {
 
     /**
      * Sets the element in the [row] row and [column] column of the matrix to the given [value].

@@ -1,12 +1,13 @@
 package net.voxelpi.voxlib.math.position
 
+import net.voxelpi.voxlib.math.aabb.AABB3
 import net.voxelpi.voxlib.math.vector.MutableVector3
 import net.voxelpi.voxlib.math.vector.Vector3
 
 /**
- * A position in a 3 dimensional space.
+ * A position in a 3-dimensional space.
  */
-public interface Position3<T : Number> {
+public interface Position3<T> where T : Number, T : Comparable<T> {
 
     public val x: T
 
@@ -30,6 +31,16 @@ public interface Position3<T : Number> {
      * Returns a vector that points from this position to the given [position].
      */
     public infix fun to(position: Position3<T>): Vector3<T>
+
+    /**
+     * Returns a new position that is relative to given [position].
+     */
+    public fun relativeTo(position: Position3<T>): Position3<T>
+
+    /**
+     * Returns a new position that is relative to the min corner of the given [aabb].
+     */
+    public fun relativeTo(aabb: AABB3<T>): Position3<T>
 
     /**
      * Creates an immutable copy of the position.

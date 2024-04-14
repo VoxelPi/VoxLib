@@ -6,9 +6,9 @@ import net.voxelpi.voxlib.math.vector.Vector3
 import net.voxelpi.voxlib.math.vector.Vector4
 
 /**
- * A generic mxn matrix.
+ * A nxm matrix.
  */
-public interface Matrix<T : Number> {
+public interface Matrix<T> where T : Number, T : Comparable<T> {
 
     /**
      * The number of rows of the matrix.

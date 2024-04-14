@@ -3,9 +3,9 @@ package net.voxelpi.voxlib.math.position
 import net.voxelpi.voxlib.math.vector.Vector3
 
 /**
- * A position in a 3 dimensional space.
+ * A position in a 3-dimensional space.
  */
-public interface MutablePosition3<T : Number> : Position3<T> {
+public interface MutablePosition3<T> : Position3<T> where T : Number, T : Comparable<T> {
 
     override var x: T
 
