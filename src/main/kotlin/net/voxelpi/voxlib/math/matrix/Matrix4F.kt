@@ -1,9 +1,11 @@
 package net.voxelpi.voxlib.math.matrix
 
+import net.voxelpi.voxlib.math.quaternion.QuaternionF
 import net.voxelpi.voxlib.math.vector.Vector2F
 import net.voxelpi.voxlib.math.vector.Vector3F
 import net.voxelpi.voxlib.math.vector.Vector4
 import net.voxelpi.voxlib.math.vector.Vector4F
+import kotlin.math.tan
 
 /**
  * A 4x4 matrix using floats.
@@ -103,6 +105,21 @@ public interface Matrix4F : Matrix4<Float> {
             )
         }
 
+        public fun rotation(quaternion: QuaternionF): Matrix4F {
+            val x = quaternion.x
+            val y = quaternion.y
+            val z = quaternion.z
+            val w = quaternion.w
+
+            @Suppress("ktlint:standard:no-multi-spaces")
+            return matrix4F(
+                1 - 2 * y * y - 2 * z * z, 2 * x * y - 2 * w * z,     2 * x * z + 2 * w * y,     0F,
+                2 * x * y + 2 * w * z,     1 - 2 * x * x - 2 * z * z, 2 * y * z - 2 * w * x,     0F,
+                2 * x * z - 2 * w * y,     2 * y * z + 2 * w * x,     1 - 2 * x * x - 2 * y * y, 0F,
+                0F,                        0F,                        0F,                        1F
+            )
+        }
+
         public fun orthographicProjection2D(
             left: Float,
             right: Float,
@@ -135,6 +152,17 @@ public interface Matrix4F : Matrix4<Float> {
                 0F,                  0F,                   (zFar - zNear) / 2F, -(zNear + zFar) / (zNear - zFar),
                 0F,                  0F,                   0F,                  1F
             )
+        }
+
+        public fun perspectiveProjection(fov: Float, aspectRatio: Float, zNear: Float, zFar: Float): Matrix4F {
+            val matrix = MutableMatrix4F()
+            val h = tan(fov * 0.5F)
+            matrix[0, 0] = 1F / (h * aspectRatio)
+            matrix[1, 1] = 1F / h
+            matrix[2, 2] = (zFar + zNear) / (zNear - zFar)
+            matrix[2, 3] = (zFar + zFar) * zNear / (zNear - zFar)
+            matrix[3, 2] = -1F
+            return matrix
         }
     }
 }

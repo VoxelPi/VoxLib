@@ -4,7 +4,7 @@ import net.voxelpi.voxlib.math.vector.MutableVector
 import net.voxelpi.voxlib.math.vector.Vector
 
 /**
- * A position in a n-dimensional space.
+ * A position in an n-dimensional space.
  */
 public interface Position<T> : Collection<T> where T : Number, T : Comparable<T> {
 
