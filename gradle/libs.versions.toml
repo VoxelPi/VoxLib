@@ -1,8 +1,8 @@
 [versions]
-coroutine = "1.8.0"
+coroutine = "1.8.1"
 junit = "5.10.2"
 log4j = "2.20.0"
-kotlin = "1.9.23"
+kotlin = "2.0.0"
 kotlinLogging = "6.0.4"
 slf4j = "1.7.36"
 
