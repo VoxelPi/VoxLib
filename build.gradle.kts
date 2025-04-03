@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.kotlin)
-    alias(libs.plugins.dokka)
+    alias(libs.plugins.dokka.core)
+    alias(libs.plugins.dokka.javadoc)
     alias(libs.plugins.indra.git)
     alias(libs.plugins.blossom)
     alias(libs.plugins.ktlint)
@@ -30,15 +31,11 @@ dependencies {
 }
 
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(21)
     explicitApi()
 }
 
 tasks {
-    dokkaHtml.configure {
-        outputDirectory.set(layout.buildDirectory.dir("docs"))
-    }
-
     test {
         useJUnitPlatform()
     }
@@ -55,12 +52,12 @@ tasks {
 }
 
 val javadocJar by tasks.register<Jar>("dokkaJavadocJar") {
-    dependsOn(tasks.dokkaJavadoc)
-    from(tasks.dokkaJavadoc.flatMap { it.outputDirectory })
+    dependsOn(tasks.dokkaGeneratePublicationJavadoc)
+    from(tasks.dokkaGeneratePublicationJavadoc.flatMap { it.outputDirectory })
     archiveClassifier.set("javadoc")
 }
 
-val sourcesJar by tasks.creating(Jar::class) {
+val sourcesJar by tasks.registering(Jar::class) {
     archiveClassifier.set("sources")
     from(sourceSets.getByName("main").allSource)
 }
