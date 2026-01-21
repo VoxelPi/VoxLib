@@ -20,7 +20,7 @@ internal class AppliedMutableMapPatchValueCollectionView<V>(
     }
 
     override fun iterator(): MutableIterator<V> {
-        TODO("Not yet implemented")
+        return MutableIteratorView(appliedPatch)
     }
 
     override fun add(element: V): Boolean {
@@ -52,5 +52,26 @@ internal class AppliedMutableMapPatchValueCollectionView<V>(
 
     override fun clear() {
         appliedPatch.clear()
+    }
+
+    private class MutableIteratorView<V>(
+        private val appliedPatch: AppliedMutableMapPatchImpl<*, V>,
+    ) : MutableIterator<V> {
+
+        val keyIterator = appliedPatch.keys.iterator()
+
+        override fun remove() {
+            keyIterator.remove()
+        }
+
+        override fun hasNext(): Boolean {
+            return keyIterator.hasNext()
+        }
+
+        override fun next(): V {
+            val nextKey = keyIterator.next()
+            @Suppress("UNCHECKED_CAST")
+            return appliedPatch[nextKey] as V
+        }
     }
 }
