@@ -5,10 +5,21 @@ public infix fun <E> Set<E>.withPatch(patch: SetPatch<E>): AppliedSetPatch<E> {
 }
 
 public infix fun <E> Set<E>.withMutablePatch(patch: MutableSetPatch<E>): AppliedMutableSetPatch<E> {
-    return AppliedMutableSetPatchImpl(this, patch.mutableCopy())
+    return AppliedMutableSetPatchImpl(this, patch)
 }
 
-public fun <T> MutableSet<T>.applyPatch(patch: SetPatch<T>) {
+public fun <E> Set<E>.buildPatch(action: AppliedMutableSetPatch<E>.() -> Unit): SetPatch<E> {
+    return buildMutablePatch(action)
+}
+
+public fun <E> Set<E>.buildMutablePatch(action: AppliedMutableSetPatch<E>.() -> Unit): MutableSetPatch<E> {
+    val patch = mutableSetPatchOf<E>(mutableSetOf(), mutableSetOf())
+    val appliedPatch = withMutablePatch(patch)
+    appliedPatch.action()
+    return patch
+}
+
+public fun <E> MutableSet<E>.applyPatch(patch: SetPatch<E>) {
     addAll(patch.added)
     removeAll(patch.removed)
 }

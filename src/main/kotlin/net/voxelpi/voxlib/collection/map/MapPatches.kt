@@ -5,7 +5,18 @@ public infix fun <K, V> Map<K, V>.withPatch(patch: MapPatch<K, V>): AppliedMapPa
 }
 
 public infix fun <K, V> Map<K, V>.withMutablePatch(patch: MutableMapPatch<K, V>): AppliedMutableMapPatch<K, V> {
-    return AppliedMutableMapPatchImpl(this, patch.mutableCopy() as MutableMapPatchImpl)
+    return AppliedMutableMapPatchImpl(this, patch as MutableMapPatchImpl)
+}
+
+public fun <K, V> Map<K, V>.buildPatch(action: AppliedMutableMapPatch<K, V>.() -> Unit): MapPatch<K, V> {
+    return buildMutablePatch(action)
+}
+
+public fun <K, V> Map<K, V>.buildMutablePatch(action: AppliedMutableMapPatch<K, V>.() -> Unit): MutableMapPatch<K, V> {
+    val patch = mutableMapPatchOf<K, V>(mutableMapOf(), mutableSetOf())
+    val appliedPatch = withMutablePatch(patch)
+    appliedPatch.action()
+    return patch
 }
 
 public fun <K, V> MutableMap<K, V>.applyPatch(patch: MapPatch<K, V>) {

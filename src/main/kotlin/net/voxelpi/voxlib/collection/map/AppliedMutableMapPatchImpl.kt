@@ -94,6 +94,6 @@ internal data class AppliedMutableMapPatchImpl<K, V>(
     }
 
     override fun reduce(): Map<K, V> {
-        return base.withPatch(patch)
+        return base.toMutableMap().apply { applyPatch(patch) }
     }
 }
